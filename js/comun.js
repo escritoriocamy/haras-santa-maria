@@ -155,23 +155,39 @@
     const izq = [["index.html#haras", "El Haras", "haras"], ["index.html#padrillos", "Padrillos", "padrillos"], ["plantel.html", "Plantel", "plantel"], ["index.html#contacto", "Contacto", "contacto"]];
     const der = [["venta.html", "Ejemplares en venta", "venta"]];
     const enlaces = (l, cta) => l.map((i) => '<a href="' + i[0] + '" class="' + (i[2] === activo ? "activo " : "") + (cta ? "cta" : "") + '">' + i[1] + '</a>').join("");
+    const marca = '<a class="marca" href="index.html" aria-label="' + esc(C.NOMBRE) + ' — inicio">' +
+      '<img src="img/marca-blanco.png" alt="" width="52" height="40">' +
+      '<span class="marca-texto"><small>Haras</small><strong>Santa María</strong><span>de Juncal</span></span></a>';
     const h = document.createElement("header");
     h.className = "encabezado" + (transparente ? " transparente" : "");
     h.innerHTML =
-      '<div class="contenedor enc-grid">' +
-        '<a class="marca" href="index.html" aria-label="' + esc(C.NOMBRE) + ' — inicio">' +
-          '<img src="img/marca-blanco.png" alt="" width="52" height="40">' +
-          '<span class="marca-texto"><small>Haras</small><strong>Santa María</strong><span>de Juncal</span></span>' +
-        '</a>' +
+      '<div class="contenedor enc-grid">' + marca +
         '<nav class="nav izq" aria-label="Principal">' + enlaces(izq) + '</nav>' +
         '<nav class="nav der" aria-label="Ventas">' + enlaces(der, true) + '</nav>' +
-        '<button class="boton-menu" type="button" aria-expanded="false">Menú</button>' +
-      '</div>' +
-      '<nav class="nav-movil" aria-label="Menú">' +
-        '<button class="cerrar-menu" type="button">Cerrar</button>' +
-        '<a href="index.html">Inicio</a>' + enlaces(izq) + enlaces(der) +
-      '</nav>';
+        '<button class="boton-menu" type="button" aria-expanded="false" aria-controls="menu-movil"><span class="rayas"><i></i><i></i></span>Menú</button>' +
+      '</div>';
     document.body.prepend(h);
+
+    /* El menú del celular va fuera del encabezado para ocupar toda la pantalla */
+    const items = [["index.html", "Inicio"]].concat(izq.map((i) => [i[0], i[1]]));
+    const m = document.createElement("div");
+    m.className = "nav-movil";
+    m.id = "menu-movil";
+    m.setAttribute("role", "dialog");
+    m.setAttribute("aria-modal", "true");
+    m.setAttribute("aria-label", "Menú");
+    m.innerHTML =
+      '<div class="menu-top">' + marca + '<button class="cerrar-menu" type="button" aria-label="Cerrar menú">' + ICONOS.cerrar + '</button></div>' +
+      '<nav class="menu-lista">' + items.map((i, n) =>
+        '<a href="' + i[0] + '" style="--i:' + n + '"><span class="num">0' + (n + 1) + '</span>' + i[1] + '<span class="fl">' + ICONOS.flecha + '</span></a>').join("") + '</nav>' +
+      '<a class="boton dorado ancho menu-cta" href="venta.html">Ejemplares en venta</a>' +
+      '<div class="menu-pie">' +
+        '<a href="' + waLink() + '" target="_blank" rel="noopener">' + ICONOS.whatsapp + esc(C.TELEFONO) + '</a>' +
+        '<a href="mailto:' + C.EMAIL + '">' + ICONOS.mail + esc(C.EMAIL) + '</a>' +
+        '<span>' + ICONOS.lugar + esc(C.DIRECCION) + '</span>' +
+      '</div>';
+    document.body.appendChild(m);
+
     if (!transparente) document.body.classList.add("con-encabezado");
     else {
       const act = () => h.classList.toggle("con-fondo", window.scrollY > 40);
@@ -180,8 +196,9 @@
     const boton = h.querySelector(".boton-menu");
     const cerrar = () => { document.body.classList.remove("menu-abierto"); boton.setAttribute("aria-expanded", "false"); };
     boton.addEventListener("click", () => { document.body.classList.add("menu-abierto"); boton.setAttribute("aria-expanded", "true"); });
-    h.querySelector(".cerrar-menu").addEventListener("click", cerrar);
-    h.querySelectorAll(".nav-movil a").forEach((a) => a.addEventListener("click", cerrar));
+    m.querySelector(".cerrar-menu").addEventListener("click", cerrar);
+    m.querySelectorAll("a").forEach((a) => a.addEventListener("click", cerrar));
+    document.addEventListener("keydown", (ev) => { if (ev.key === "Escape") cerrar(); });
   }
 
   function pie() {
