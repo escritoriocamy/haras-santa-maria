@@ -220,7 +220,7 @@
           '<a href="' + C.INSTAGRAM + '" target="_blank" rel="noopener">Instagram</a><a href="' + C.FACEBOOK + '" target="_blank" rel="noopener">Facebook</a>' +
         '</nav>' +
         '<p class="pie-datos">' + esc(C.DIRECCION) + ' · <a href="' + waLink() + '" target="_blank" rel="noopener">' + esc(C.TELEFONO) + '</a> · <a href="mailto:' + C.EMAIL + '">' + esc(C.EMAIL) + '</a></p>' +
-        '<p class="pie-legal">© ' + new Date().getFullYear() + ' ' + esc(C.NOMBRE) + ' · San José, Uruguay</p>' +
+        '<p class="pie-legal">© ' + new Date().getFullYear() + ' ' + esc(C.NOMBRE) + ' · San José, Uruguay · <a class="acceso-panel" href="panel.html" rel="nofollow">Acceso</a></p>' +
       '</div>';
     document.body.appendChild(f);
     const wa = document.createElement("a");
