@@ -169,7 +169,7 @@
     document.body.prepend(h);
 
     /* El menú del celular va fuera del encabezado para ocupar toda la pantalla */
-    const items = [["index.html", "Inicio"]].concat(izq.map((i) => [i[0], i[1]]));
+    const items = [["index.html", "Inicio"], ["venta.html", "En venta"]].concat(izq.map((i) => [i[0], i[1]]));
     const m = document.createElement("div");
     m.className = "nav-movil";
     m.id = "menu-movil";
@@ -179,14 +179,21 @@
     m.innerHTML =
       '<div class="menu-top">' + marca + '<button class="cerrar-menu" type="button" aria-label="Cerrar menú">' + ICONOS.cerrar + '</button></div>' +
       '<nav class="menu-lista">' + items.map((i, n) =>
-        '<a href="' + i[0] + '" style="--i:' + n + '"><span class="num">0' + (n + 1) + '</span>' + i[1] + '<span class="fl">' + ICONOS.flecha + '</span></a>').join("") + '</nav>' +
-      '<a class="boton dorado ancho menu-cta" href="venta.html">Ejemplares en venta</a>' +
+        '<a href="' + i[0] + '" style="--i:' + n + '"' + (i[0] === "venta.html" ? ' class="en-venta"' : "") + '>' + i[1] +
+        (i[0] === "venta.html" ? '<span class="cuenta" hidden></span>' : "") + '<span class="fl">' + ICONOS.flecha + '</span></a>').join("") + '</nav>' +
       '<div class="menu-pie">' +
         '<a href="' + waLink() + '" target="_blank" rel="noopener">' + ICONOS.whatsapp + esc(C.TELEFONO) + '</a>' +
         '<a href="mailto:' + C.EMAIL + '">' + ICONOS.mail + esc(C.EMAIL) + '</a>' +
         '<span>' + ICONOS.lugar + esc(C.DIRECCION) + '</span>' +
       '</div>';
     document.body.appendChild(m);
+
+    /* Cuántos ejemplares hay a la venta, al lado de "En venta" */
+    cargarVentas().then(({ lista }) => {
+      const n = lista.filter((e) => estadoClase(e) !== "vendido").length;
+      const c = m.querySelector(".cuenta");
+      if (n && c) { c.textContent = n + (n === 1 ? " disponible" : " disponibles"); c.hidden = false; }
+    });
 
     if (!transparente) document.body.classList.add("con-encabezado");
     else {
