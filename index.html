@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Haras Santa María de Juncal · San José, Uruguay</title>
+<title>Haras Santa María de Juncal · Cría de sangre pura de carrera · San José, Uruguay</title>
 <meta name="description" content="Haras Santa María de Juncal: cría de caballos sangre pura de carrera en el paraje Juncal, San José de Mayo, Uruguay. Padrillos, yeguas madre, producción y ejemplares en venta particular.">
-<meta name="theme-color" content="#f4f1ea">
+<meta name="theme-color" content="#0f2c55">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Haras Santa María de Juncal">
 <meta property="og:description" content="Cría de caballos sangre pura de carrera · San José, Uruguay.">
-<meta property="og:image" content="img/portera.jpg">
+<meta property="og:image" content="video/fondo.jpg">
 <link rel="icon" type="image/png" href="img/marca-azul.png">
 <link rel="apple-touch-icon" href="img/logo-small.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/estilos.css">
 <script type="application/ld+json">
 {
@@ -31,157 +31,192 @@
 </head>
 <body>
 
-<section class="portada" aria-label="El Haras en video">
+<div class="bienvenida" id="bienvenida" aria-hidden="true">
+  <img src="img/logo-blanco.png" alt="">
+  <span class="linea-carga"></span>
+</div>
+
+<section class="portada" aria-label="Bienvenida">
+  <img class="poster" id="poster-portada" src="video/fondo.jpg" alt="">
+  <video id="video-portada" muted playsinline loop autoplay preload="auto" aria-hidden="true"></video>
+  <div class="portada-contenido">
+    <span class="pildora aparece"><span class="punto"></span>Paraje Juncal · San José · Uruguay</span>
+    <img class="portada-logo aparece d1" src="img/logo-blanco.png" alt="Haras Santa María de Juncal" width="630" height="600">
+    <h1 class="aparece d2">Cría de <em>sangre pura</em> de carrera</h1>
+    <p class="portada-bajada aparece d3">Bienvenidos al Haras. Acá nacen, se crían y se preparan los caballos que después se ven en las pistas de Maroñas y Las Piedras.</p>
+    <div class="portada-acciones aparece d4">
+      <a class="boton blanco" href="venta.html">Ver ejemplares en venta <span class="flecha">→</span></a>
+      <a class="boton contorno" href="#haras">Conocer el Haras</a>
+    </div>
+  </div>
+  <div class="portada-pie aparece d4">
+    <button class="boton-film" type="button" data-film><span class="play" data-icono="play"></span>Ver el film del Haras</button>
+  </div>
+</section>
+
+<div class="cinta" aria-hidden="true">
+  <div class="cinta-pista">
+    <span>Pura sangre de carrera</span><i>✦</i><span>Holy Boss (USA)</span><i>✦</i><span>Yeguas madre</span><i>✦</i><span>Venta particular</span><i>✦</i><span>Ruta 3 · Km 87</span><i>✦</i><span>San José · Uruguay</span><i>✦</i>
+    <span>Pura sangre de carrera</span><i>✦</i><span>Holy Boss (USA)</span><i>✦</i><span>Yeguas madre</span><i>✦</i><span>Venta particular</span><i>✦</i><span>Ruta 3 · Km 87</span><i>✦</i><span>San José · Uruguay</span><i>✦</i>
+  </div>
+</div>
+
+<section class="seccion" id="haras">
   <div class="contenedor">
-    <div class="triptico">
-      <figure><video muted playsinline loop preload="metadata" poster="video/panel-1.jpg" data-src="video/panel-1.mp4" aria-hidden="true"></video></figure>
-      <figure class="principal"><video muted playsinline loop preload="metadata" poster="video/panel-2.jpg" data-src="video/panel-2.mp4" aria-hidden="true"></video></figure>
-      <figure><video muted playsinline loop preload="metadata" poster="video/panel-3.jpg" data-src="video/panel-3.mp4" aria-hidden="true"></video></figure>
+    <div class="haras-grid">
+      <div class="haras-texto revela">
+        <span class="rotulo">El Haras</span>
+        <h2 class="titulo">Nacidos <em>en el Juncal</em></h2>
+        <p class="entrada">Cada generación nace, se desteta y se cría en nuestros campos, a pocos kilómetros de San José de Mayo.</p>
+        <p>Trabajamos con un plantel de yeguas madre de Uruguay, Argentina, Brasil, Chile y Estados Unidos, y con padrillos de línea internacional. De esa selección salieron ganadores clásicos como Justice Cat, vencedor del Gran Premio Pedro Piñeyrúa (G1).</p>
+        <p>Cada año presentamos la producción en remate y, además, ofrecemos ejemplares seleccionados en venta particular.</p>
+        <p style="margin-top:28px"><a class="enlace" href="plantel.html">Conocer el plantel →</a></p>
+      </div>
+      <div class="haras-fotos revela">
+        <img class="f1" src="img/v-galpon.jpg" alt="Galpón de boxes del Haras" loading="lazy">
+        <img class="f2" src="img/ig-yegua-potrillo.jpg" alt="Yegua con su potrillo" loading="lazy">
+        <div class="sello">Cría en el<br>Juncal<b>SAN JOSÉ</b></div>
+      </div>
     </div>
-    <div class="portada-pie">
-      <p class="lema">Cría de caballos sangre pura de carrera. <span>Paraje Juncal, San José, Uruguay.</span></p>
-      <button class="boton-film" type="button" data-film>Ver el film del Haras</button>
+    <div class="cifras">
+      <div class="cifra revela"><strong>34</strong><span>Yeguas madre</span></div>
+      <div class="cifra revela"><strong>160+</strong><span>Productos registrados</span></div>
+      <div class="cifra revela"><strong>G1</strong><span>Justice Cat, G.P. Pedro Piñeyrúa</span></div>
+      <div class="cifra revela"><strong>5</strong><span>Países de origen del plantel</span></div>
     </div>
   </div>
 </section>
 
-<section class="seccion sin-filete" id="haras">
-  <div class="contenedor columnas">
-    <span class="rotulo">El Haras</span>
-    <div class="texto-intro">
-      <p class="entrada">El Haras Santa María de Juncal cría caballos sangre pura de carrera en el paraje Juncal, a pocos kilómetros de San José de Mayo.</p>
-      <p>Cada generación nace, se desteta y se cría en el campo, al cuidado diario del personal del Haras. El plantel reúne yeguas madre de Uruguay, Argentina, Brasil, Chile y Estados Unidos. De su producción salieron ganadores clásicos como Justice Cat, vencedor del Gran Premio Pedro Piñeyrúa (G1).</p>
-      <p>La producción se presenta cada año en remate. Algunos ejemplares, además, se ofrecen en venta particular.</p>
-      <p style="margin-top:26px"><a class="enlace" href="plantel.html">Yeguas madre y producción</a></p>
-    </div>
-  </div>
-</section>
-
-<figure class="foto-ancha">
-  <img src="img/portera.jpg" alt="Cartel del Haras Santa María de Juncal en la portera" loading="lazy" width="2000" height="733">
-  <figcaption class="epigrafe">La portera del Haras, sobre la Ruta 3, kilómetro 87.</figcaption>
-</figure>
-
-<section class="seccion sin-filete" id="venta">
+<section class="seccion blanca" id="venta">
   <div class="contenedor">
     <div class="cabeza-seccion">
-      <div>
+      <div class="revela">
         <span class="rotulo">Venta particular</span>
-        <h2 class="titulo">Ejemplares en venta</h2>
+        <h2 class="titulo">Ejemplares <em>en venta</em></h2>
+        <p class="bajada">Caballos de nuestra producción, con fotos, video, pedigrí completo e información del padre y la madre.</p>
       </div>
-      <a class="enlace" href="venta.html" id="ver-todos">Ver todos</a>
+      <a class="boton claro" href="venta.html" id="ver-todos">Ver todos <span class="flecha">→</span></a>
     </div>
     <div id="venta-destacados"><p class="cargando">Cargando…</p></div>
   </div>
 </section>
 
-<section class="seccion blanca" id="padrillos">
+<section class="seccion azul" id="padrillos">
   <div class="contenedor">
     <div class="cabeza-seccion">
-      <div>
+      <div class="revela">
         <span class="rotulo">Padrillos</span>
-        <h2 class="titulo">Padrillos del Haras</h2>
+        <h2 class="titulo">La sangre <em>del Haras</em></h2>
       </div>
     </div>
 
     <article class="padrillo">
-      <figure><img src="img/ig-holy-boss.jpg" alt="Holy Boss (USA)" loading="lazy"></figure>
-      <div>
-        <span class="estado-padrillo vers">En servicio desde 2025</span>
-        <h3 class="nombre">Holy Boss <small>(USA)</small></h3>
-        <p class="linea-sangre">Nuevo padrillo del Haras.</p>
-        <p class="nota">Llega para reemplazar a The Leopard. Estará disponible para la presente y las próximas temporadas de servicios.</p>
+      <figure class="revela"><img src="img/ig-holy-boss.jpg" alt="Holy Boss (USA) al galope" loading="lazy"></figure>
+      <div class="revela">
+        <span class="estado-padrillo">Nuevo padrillo · 2025</span>
+        <h3 class="nombre">Holy Boss <small>USA</small></h3>
+        <p class="linea-sangre">En servicio en el Haras Santa María de Juncal</p>
+        <p class="nota">Es un gran honor para nuestro Haras presentar a Holy Boss, disponible para la presente y las próximas temporadas de servicios.</p>
         <ul class="datos">
-          <li><span class="k">Origen</span><span class="puntos"></span><span class="v">Estados Unidos</span></li>
-          <li><span class="k">En Uruguay</span><span class="puntos"></span><span class="v">Padre de Capo Boss, sprinter en Maroñas</span></li>
-          <li><span class="k">En Argentina</span><span class="puntos"></span><span class="v">Padre de tres ganadores clásicos</span></li>
+          <li><span class="k">Origen</span><span class="v">Estados Unidos</span></li>
+          <li><span class="k">En Uruguay</span><span class="v">Padre de Capo Boss, sprinter en Maroñas</span></li>
+          <li><span class="k">En Argentina</span><span class="v">Padre de 3 ganadores clásicos</span></li>
         </ul>
-        <a class="enlace" href="#" data-wa="Hola, quisiera consultar por los servicios de Holy Boss.">Consultar servicios</a>
+        <a class="boton dorado" href="#" data-wa="Hola, quisiera consultar por los servicios de Holy Boss.">Consultar servicios</a>
       </div>
     </article>
 
-    <article class="padrillo">
-      <figure>
-        <img src="img/ig-the-leopard.jpg" alt="The Leopard (USA)" loading="lazy">
-        <figcaption class="epigrafe">Foto: Marcelo Sarachi.</figcaption>
-      </figure>
-      <div>
-        <span class="estado-padrillo vers">2005 – 2025</span>
-        <h3 class="nombre">The Leopard <small>(USA)</small></h3>
-        <p class="linea-sangre">Por Storm Cat y Moon Safari, por Mr. Prospector.</p>
-        <p class="nota">Padre de múltiples ganadores clásicos y líder de la estadística de padrillos de dosañeros en 2024. Su sangre sigue en el Haras a través de sus hijas, hoy yeguas madre.</p>
+    <article class="padrillo invertido">
+      <figure class="revela"><img src="img/ig-the-leopard.jpg" alt="The Leopard (USA)" loading="lazy"><figcaption>Foto: Marcelo Sarachi</figcaption></figure>
+      <div class="revela">
+        <span class="estado-padrillo memoria">In memoriam · 2005 – 2025</span>
+        <h3 class="nombre">The Leopard <small>USA</small></h3>
+        <p class="linea-sangre">Storm Cat — Moon Safari, por Mr. Prospector</p>
+        <p class="nota">Padre de múltiples ganadores clásicos y líder absoluto de la estadística de dosañeros en 2024. Su leyenda sigue en el Haras, como padre y como abuelo materno.</p>
         <ul class="datos">
-          <li><span class="k">Pelaje</span><span class="puntos"></span><span class="v">Zaino</span></li>
-          <li><span class="k">Productos en el Haras</span><span class="puntos"></span><span class="v">63</span></li>
-          <li><span class="k">Entre ellos</span><span class="puntos"></span><span class="v">Justice Cat, Astrid, Azulgrana</span></li>
+          <li><span class="k">Pelaje</span><span class="v">Zaino</span></li>
+          <li><span class="k">Productos en el Haras</span><span class="v">63</span></li>
+          <li><span class="k">Destacados</span><span class="v">Justice Cat, Astrid, Azulgrana</span></li>
         </ul>
-        <a class="enlace" href="plantel.html?padre=The%20Leopard#produccion">Ver su producción</a>
+        <a class="enlace" href="plantel.html?padre=The%20Leopard#produccion">Ver su producción →</a>
       </div>
     </article>
   </div>
 </section>
 
-<section class="seccion" id="trayectoria">
+<section class="seccion" id="film">
   <div class="contenedor">
-    <div class="cabeza-seccion">
-      <div>
-        <span class="rotulo">Crónica</span>
-        <h2 class="titulo">Los últimos años</h2>
+    <div class="film-banda revela">
+      <video muted playsinline loop preload="none" data-src="video/fondo.mp4" poster="video/fondo.jpg" aria-hidden="true"></video>
+      <div class="contenido">
+        <span class="rotulo">El Haras en movimiento</span>
+        <h2>Un día en <em>Santa María</em></h2>
+        <p>Del primer rayo de sol en los potreros al último caballo que entra al box.</p>
+        <button class="boton blanco" type="button" data-film>▶&nbsp; Ver el film completo</button>
       </div>
     </div>
-    <div class="par-fotos">
-      <figure><img src="img/ig-justice-cat-carrera.jpg" alt="Justice Cat cruzando el disco en Maroñas" loading="lazy"><figcaption class="epigrafe">Justice Cat, criado en el Haras, en Maroñas.</figcaption></figure>
-      <figure><img src="img/ig-destete.jpg" alt="Potrillos de la generación 2020" loading="lazy"><figcaption class="epigrafe">Destete de la generación 2020.</figcaption></figure>
+  </div>
+</section>
+
+<section class="seccion crema-2" id="trayectoria">
+  <div class="contenedor">
+    <div class="cabeza-seccion">
+      <div class="revela">
+        <span class="rotulo">Trayectoria</span>
+        <h2 class="titulo">Orgullo <em>del Haras</em></h2>
+      </div>
     </div>
     <ol class="cronica">
-      <li><span class="fecha">Junio de 2025</span><div><h3>Llega Holy Boss</h3><p>El nuevo padrillo del Haras, padre de Capo Boss en Maroñas y de tres ganadores clásicos en Argentina.</p></div></li>
-      <li><span class="fecha">Enero de 2025</span><div><h3>Despedida de The Leopard</h3><p>Muere el padrillo del Haras. Su línea continúa en sus hijas, que hoy son yeguas madre.</p></div></li>
-      <li><span class="fecha">Julio de 2024</span><div><h3>Little Roy y Azulgrana</h3><p>Victoria clásica de Little Roy y triunfo de Azulgrana, ambos productos del Haras.</p></div></li>
-      <li><span class="fecha">2024</span><div><h3>The Leopard, primero entre dosañeros</h3><p>Lideró la estadística de padrillos de dosañeros en Maroñas, en Las Piedras y en todos los hipódromos, por sumas y por carreras ganadas.</p></div></li>
-      <li><span class="fecha">Enero de 2022</span><div><h3>Justice Cat, ganador de Grupo 1</h3><p>Ganó el Gran Premio Pedro Piñeyrúa (G1) y fue nominado por Maroñas para representar a Uruguay en el Gran Premio Latinoamericano, en Chile.</p></div></li>
-      <li><span class="fecha">Abril de 2021</span><div><h3>Astrid, la mejor puntuada</h3><p>La hija de The Leopard y Castle Rose llegó como la mejor puntuada a la jornada de Campeones.</p></div></li>
+      <li class="con-foto revela"><img src="img/ig-justice-cat-carrera.jpg" alt="Justice Cat ganando en Maroñas" loading="lazy"><div><span class="fecha">Enero 2022</span><h3>Justice Cat, Grupo 1</h3><p>Nacido y criado en el Haras, ganó el Gran Premio Pedro Piñeyrúa (G1) y fue nominado para representar a Uruguay en el Gran Premio Latinoamericano, en Chile.</p></div></li>
+      <li class="revela"><span class="fecha">2024</span><h3>The Leopard, líder absoluto</h3><p>Primero en todas las estadísticas de padrillos de dosañeros: Maroñas, Las Piedras y todos los hipódromos, por sumas y por carreras ganadas.</p></li>
+      <li class="con-foto revela"><img src="img/ig-holy-boss-retrato.jpg" alt="Holy Boss (USA)" loading="lazy" style="object-position:50% 25%"><div><span class="fecha">Junio 2025</span><h3>Llega Holy Boss</h3><p>El nuevo padrillo del Haras, padre de Capo Boss en Maroñas y de tres ganadores clásicos en Argentina.</p></div></li>
+      <li class="revela"><span class="fecha">Julio 2024</span><h3>Little Roy y Azulgrana</h3><p>Victoria clásica de Little Roy y triunfo de Azulgrana, dos productos del Haras.</p></li>
+      <li class="con-foto revela"><img src="img/ig-destete.jpg" alt="Destete de la generación 2020" loading="lazy"><div><span class="fecha">Abril 2021</span><h3>Destete 2020</h3><p>Jornada de trabajo con el último destete de la generación 2020.</p></div></li>
+      <li class="revela"><span class="fecha">Abril 2021</span><h3>Astrid, la mejor puntuada</h3><p>La hija de The Leopard y Castle Rose fue la mejor puntuada para la gran jornada de Campeones.</p></li>
     </ol>
   </div>
 </section>
 
-<section class="seccion" id="galeria">
+<section class="seccion blanca" id="galeria">
   <div class="contenedor">
     <div class="cabeza-seccion">
-      <div>
+      <div class="revela">
         <span class="rotulo">Galería</span>
-        <h2 class="titulo">En el campo</h2>
+        <h2 class="titulo">Vida <em>en el campo</em></h2>
       </div>
-      <a class="enlace" href="https://www.instagram.com/harassantamariadejuncal/" target="_blank" rel="noopener">Instagram</a>
+      <a class="boton claro" href="https://www.instagram.com/harassantamariadejuncal/" target="_blank" rel="noopener">Seguinos en Instagram</a>
     </div>
-    <div class="galeria">
+    <div class="galeria revela">
       <figure><img src="img/v-luz-dorada.jpg" alt="Cuidador con un caballo al amanecer" loading="lazy"></figure>
+      <figure><img src="img/v-hornero.jpg" alt="Nido de hornero en un poste" loading="lazy"></figure>
       <figure><img src="img/v-galpon.jpg" alt="Galpón de boxes" loading="lazy"></figure>
-      <figure><img src="img/ig-yegua-potrillo.jpg" alt="Yegua con su potrillo" loading="lazy"></figure>
-      <figure><img src="img/v-silueta.jpg" alt="Caballo saliendo del galpón" loading="lazy"></figure>
+      <figure><img src="img/ig-portera.jpg" alt="Portera del Haras" loading="lazy"></figure>
       <figure><img src="img/v-potrillos.jpg" alt="Potrillos en el potrero" loading="lazy"></figure>
-      <figure><img src="img/v-hornero.jpg" alt="Nido de hornero en un poste del Haras" loading="lazy"></figure>
+      <figure><img src="img/v-silueta.jpg" alt="Caballo saliendo del galpón" loading="lazy"></figure>
+      <figure><img src="img/v-cuidador.jpg" alt="Cuidador con un caballo" loading="lazy"></figure>
+      <figure><img src="img/v-porton.jpg" alt="Portón del galpón" loading="lazy"></figure>
     </div>
   </div>
 </section>
 
-<section class="seccion blanca" id="contacto">
+<section class="seccion azul" id="contacto">
   <div class="contenedor contacto-grid">
-    <div>
+    <div class="revela">
       <span class="rotulo">Contacto</span>
-      <h2 class="titulo" style="margin-bottom:30px">Visitas y consultas</h2>
+      <h2 class="titulo">Vení a <em>conocernos</em></h2>
       <ul class="datos-contacto">
-        <li><small>Teléfono y WhatsApp</small><a href="#" data-wa>(+598) 099 282 486</a></li>
-        <li><small>Correo</small><a href="mailto:santamariadejuncal@gmail.com">santamariadejuncal@gmail.com</a></li>
-        <li><small>Dirección</small><span>Ruta 3, kilómetro 87. Paraje Juncal, San José.</span></li>
+        <li><span class="ico" data-icono="whatsapp"></span><div><small>Teléfono y WhatsApp</small><a href="#" data-wa>(+598) 099 282 486</a></div></li>
+        <li><span class="ico" data-icono="mail"></span><div><small>Correo</small><a href="mailto:santamariadejuncal@gmail.com">santamariadejuncal@gmail.com</a></div></li>
+        <li><span class="ico" data-icono="lugar"></span><div><small>Dirección</small><span>Ruta 3 Km 87 · Paraje Juncal, San José</span></div></li>
       </ul>
       <div class="mapa">
         <iframe title="Ubicación del Haras Santa María de Juncal" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           src="https://maps.google.com/maps?q=-34.386272,-56.777203&amp;z=13&amp;output=embed"></iframe>
       </div>
     </div>
-    <form class="formulario" id="form-contacto" novalidate>
-      <h3>Escríbanos</h3>
-      <p>Por ejemplares en venta, servicios de padrillos o para coordinar una visita.</p>
+    <form class="formulario revela" id="form-contacto" novalidate>
+      <h3>Escribinos</h3>
+      <p>Ejemplares en venta, servicios de padrillos o visitas al Haras.</p>
       <div class="campos">
         <div class="campo"><label for="c-nombre">Nombre</label><input id="c-nombre" name="nombre" required autocomplete="name"></div>
         <div class="campo"><label for="c-tel">Teléfono</label><input id="c-tel" name="telefono" type="tel" autocomplete="tel"></div>
@@ -189,8 +224,8 @@
         <div class="campo completo"><label for="c-msj">Mensaje</label><textarea id="c-msj" name="mensaje" required></textarea></div>
       </div>
       <input name="web" class="oculto" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="boton" type="submit">Enviar</button>
-      <p class="nota">O por WhatsApp al (+598) 099 282 486.</p>
+      <button class="boton ancho" type="submit">Enviar consulta <span class="flecha">→</span></button>
+      <p class="nota">También podés escribirnos directo por WhatsApp.</p>
       <div class="mensaje-ok" role="status"></div>
     </form>
   </div>
@@ -201,24 +236,39 @@
 <script>
 (function () {
   const H = window.Haras;
-  H.encabezado("");
+  H.encabezado("", true);
   H.pie();
 
-  document.querySelectorAll("[data-wa]").forEach((a) => {
-    a.href = H.waLink(a.dataset.wa || undefined);
-    a.target = "_blank"; a.rel = "noopener";
-  });
+  document.querySelectorAll("[data-icono]").forEach((el) => { el.innerHTML = H.ICONOS[el.dataset.icono] || ""; });
+  document.querySelectorAll("[data-wa]").forEach((a) => { a.href = H.waLink(a.dataset.wa || undefined); a.target = "_blank"; a.rel = "noopener"; });
   document.querySelectorAll("[data-film]").forEach((b) => b.addEventListener("click", H.abrirFilm));
 
-  /* Tríptico: en el celular solo se carga el panel del medio */
-  const ahorro = navigator.connection && navigator.connection.saveData;
+  /* Bienvenida: una vez por visita */
+  const bien = document.getElementById("bienvenida");
+  let vista = false;
+  try { vista = sessionStorage.getItem("haras-bienvenida") === "1"; sessionStorage.setItem("haras-bienvenida", "1"); } catch (e) {}
+  if (vista || window.matchMedia("(prefers-reduced-motion: reduce)").matches) bien.remove();
+  else {
+    document.body.classList.add("esperando");
+    setTimeout(() => { bien.classList.add("fuera"); document.body.classList.remove("esperando"); }, 1700);
+    setTimeout(() => bien.remove(), 2900);
+  }
+
+  /* Video de fondo: horizontal en computadora, vertical en el celular */
+  const v = document.getElementById("video-portada");
   const movil = window.matchMedia("(max-width: 760px)").matches;
-  document.querySelectorAll(".triptico figure").forEach((f) => {
-    if (ahorro || (movil && !f.classList.contains("principal"))) return;
-    const v = f.querySelector("video");
-    v.src = v.dataset.src;
+  const ahorro = navigator.connection && navigator.connection.saveData;
+  if (movil) document.getElementById("poster-portada").src = "video/fondo-movil.jpg";
+  if (!ahorro) {
+    v.src = movil ? "video/fondo-movil.mp4" : "video/fondo.mp4";
     const p = v.play(); if (p && p.catch) p.catch(() => {});
-  });
+  }
+
+  /* Video de la banda del film: arranca cuando se ve */
+  const banda = document.querySelector(".film-banda video");
+  if (!ahorro && "IntersectionObserver" in window) {
+    new IntersectionObserver((en, o) => { if (en[0].isIntersecting) { banda.src = movil ? "video/fondo-movil.mp4" : banda.dataset.src; banda.play().catch(() => {}); o.disconnect(); } }, { rootMargin: "200px" }).observe(banda);
+  }
 
   document.querySelectorAll(".galeria figure").forEach((f) => f.addEventListener("click", () => {
     const img = f.querySelector("img");
@@ -235,9 +285,11 @@
       const orden = disponibles.slice().sort((a, b) => (String(b.destacado) === "true") - (String(a.destacado) === "true"));
       cont.innerHTML = '<div class="grilla-venta">' + orden.slice(0, 3).map(H.tarjetaVenta).join("") + '</div>';
     }
+    H.animar(cont);
   });
 
   H.conectarFormulario(document.getElementById("form-contacto"));
+  H.animar();
 })();
 </script>
 </body>

@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ejemplares en venta · Haras Santa María de Juncal</title>
 <meta name="description" content="Ejemplares sangre pura de carrera en venta particular, criados en el Haras Santa María de Juncal, San José, Uruguay. Fichas con fotos, video y genealogía.">
-<meta name="theme-color" content="#f4f1ea">
+<meta name="theme-color" content="#0f2c55">
 <meta property="og:title" content="Ejemplares en venta · Haras Santa María de Juncal">
 <meta property="og:image" content="img/portera.jpg">
 <link rel="icon" type="image/png" href="img/marca-azul.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
 <header class="cabecera-pagina">
   <div class="contenedor">
     <span class="rotulo">Venta particular</span>
-    <h1>Ejemplares en venta</h1>
+    <h1>Ejemplares <em>en venta</em></h1>
     <p>Además del remate anual, el Haras ofrece algunos ejemplares de su producción en venta particular. Cada ficha incluye fotos, video, pedigrí e información del padre y la madre.</p>
   </div>
 </header>
@@ -45,7 +45,7 @@
     <div class="texto-intro">
       <p class="entrada">El trato es directo con el Haras.</p>
       <p>Consulte por WhatsApp o desde la ficha de cada ejemplar. Coordinamos visitas para verlo en persona y enviamos los videos y la documentación que necesite.</p>
-      <p style="margin-top:24px"><a class="boton" href="#" data-wa="Hola, quisiera consultar por los ejemplares en venta.">Consultar por WhatsApp</a></p>
+      <p style="margin-top:24px"><a class="boton whatsapp" href="#" data-wa="Hola, quisiera consultar por los ejemplares en venta.">Consultar por WhatsApp</a></p>
     </div>
   </div>
 </section>
@@ -55,7 +55,7 @@
 <script>
 (function () {
   const H = window.Haras;
-  H.encabezado("venta", true);
+  H.encabezado("venta");
   H.pie();
   document.querySelectorAll("[data-wa]").forEach((a) => { a.href = H.waLink(a.dataset.wa); a.target = "_blank"; a.rel = "noopener"; });
 

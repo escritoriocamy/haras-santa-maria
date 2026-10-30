@@ -120,46 +120,51 @@
     const fotos = e.fotos || [];
     const portada = fotos[0] ? foto(fotos[0], 900) : "img/v-potrillos.jpg";
     const anio = anioNac(e);
-    const estado = clase === "vendido" ? "Vendido" : clase === "reservado" ? "Reservado" : "";
-    const meta = [sexoTexto(e.sexo), e.pelaje, anio].filter(Boolean).map(esc).join(", ");
+    const etiqueta = clase === "vendido" ? '<span class="etiqueta vendido">Vendido</span>'
+      : clase === "reservado" ? '<span class="etiqueta reservado">Reservado</span>'
+      : (e.destacado === true || String(e.destacado) === "true" ? '<span class="etiqueta">Destacado</span>' : '<span class="etiqueta">Disponible</span>');
+    const meta = [sexoTexto(e.sexo), e.pelaje, anio].filter(Boolean).map(esc).join(" · ");
     const precio = precioTexto(e);
-    return '<a class="tarjeta' + (clase === "vendido" ? " vendida" : "") + '" href="ejemplar.html?id=' + encodeURIComponent(e.id) + '">' +
-      '<div class="tarjeta-foto"><img src="' + esc(portada) + '" alt="' + esc(e.nombre) + '" loading="lazy"></div>' +
+    return '<a class="tarjeta revela' + (clase === "vendido" ? " vendida" : "") + '" href="ejemplar.html?id=' + encodeURIComponent(e.id) + '">' +
+      '<div class="tarjeta-foto">' + etiqueta + (e.ejemplo ? '<span class="etiqueta ejemplo">Ejemplo</span>' : "") +
+        '<img src="' + esc(portada) + '" alt="' + esc(e.nombre) + '" loading="lazy"></div>' +
       '<div class="tarjeta-cuerpo">' +
-        '<span class="meta">' + meta + (estado ? ' · <span class="marca-estado">' + estado + '</span>' : "") + (e.ejemplo ? ' · ficha de ejemplo' : "") + '</span>' +
-        '<h3 class="nombre">' + esc(e.nombre) + '</h3>' +
+        '<span class="meta">' + meta + '</span>' +
+        '<h3>' + esc(e.nombre) + '</h3>' +
         '<div class="tarjeta-sangre">' + sangreTexto(e) + '</div>' +
         '<div class="tarjeta-pie">' +
           '<span class="precio">' + (clase === "vendido" ? "<i>Vendido</i>" : precio ? precio : "<i>Precio a consultar</i>") + '</span>' +
-          '<span class="ver">Ver ficha</span>' +
+          '<span class="ver">Ver ficha →</span>' +
         '</div>' +
       '</div>' +
     '</a>';
   }
 
   function bloqueProximamente() {
-    return '<div class="proximamente">' +
-      '<h3>Próximamente</h3>' +
-      '<p>Además del remate anual, el Haras ofrecerá en venta particular ejemplares seleccionados de su producción. Cada uno tendrá su ficha con fotos, video y pedigrí.</p>' +
+    return '<div class="proximamente revela">' +
+      '<div><h3>Muy <em>pronto</em></h3>' +
+      '<p>Además del remate anual, el Haras va a ofrecer en venta particular ejemplares seleccionados de su producción, con fotos, video y pedigrí completo.</p></div>' +
       '<div class="acciones">' +
-        '<a class="boton" href="' + waLink("Hola, quisiera recibir información cuando publiquen ejemplares en venta.") + '" target="_blank" rel="noopener">Avisarme por WhatsApp</a>' +
-        '<a class="enlace" href="index.html#contacto">Escribirnos</a>' +
+        '<a class="boton dorado" href="' + waLink("Hola, quisiera recibir información cuando publiquen ejemplares en venta.") + '" target="_blank" rel="noopener">Avisarme por WhatsApp</a>' +
       '</div>' +
     '</div>';
   }
 
   /* ---------- Encabezado y pie ---------- */
-  function encabezado(activo) {
-    const izq = [["index.html#haras", "El Haras", "haras"], ["index.html#padrillos", "Padrillos", "padrillos"], ["plantel.html", "Plantel", "plantel"]];
-    const der = [["venta.html", "En venta", "venta"], ["index.html#contacto", "Contacto", "contacto"]];
-    const enlaces = (l) => l.map((i) => '<a href="' + i[0] + '"' + (i[2] === activo ? ' class="activo"' : "") + '>' + i[1] + '</a>').join("");
+  function encabezado(activo, transparente) {
+    const izq = [["index.html#haras", "El Haras", "haras"], ["index.html#padrillos", "Padrillos", "padrillos"], ["plantel.html", "Plantel", "plantel"], ["index.html#contacto", "Contacto", "contacto"]];
+    const der = [["venta.html", "Ejemplares en venta", "venta"]];
+    const enlaces = (l, cta) => l.map((i) => '<a href="' + i[0] + '" class="' + (i[2] === activo ? "activo " : "") + (cta ? "cta" : "") + '">' + i[1] + '</a>').join("");
     const h = document.createElement("header");
-    h.className = "encabezado";
+    h.className = "encabezado" + (transparente ? " transparente" : "");
     h.innerHTML =
       '<div class="contenedor enc-grid">' +
+        '<a class="marca" href="index.html" aria-label="' + esc(C.NOMBRE) + ' — inicio">' +
+          '<img src="img/marca-blanco.png" alt="" width="52" height="40">' +
+          '<span class="marca-texto"><small>Haras</small><strong>Santa María</strong><span>de Juncal</span></span>' +
+        '</a>' +
         '<nav class="nav izq" aria-label="Principal">' + enlaces(izq) + '</nav>' +
-        '<a class="marca" href="index.html" aria-label="' + esc(C.NOMBRE) + ' — inicio"><img class="marca-azul" src="img/logo-azul.png" alt="' + esc(C.NOMBRE) + '" width="630" height="600"></a>' +
-        '<nav class="nav der" aria-label="Ventas y contacto">' + enlaces(der) + '</nav>' +
+        '<nav class="nav der" aria-label="Ventas">' + enlaces(der, true) + '</nav>' +
         '<button class="boton-menu" type="button" aria-expanded="false">Menú</button>' +
       '</div>' +
       '<nav class="nav-movil" aria-label="Menú">' +
@@ -167,6 +172,11 @@
         '<a href="index.html">Inicio</a>' + enlaces(izq) + enlaces(der) +
       '</nav>';
     document.body.prepend(h);
+    if (!transparente) document.body.classList.add("con-encabezado");
+    else {
+      const act = () => h.classList.toggle("con-fondo", window.scrollY > 40);
+      act(); window.addEventListener("scroll", act, { passive: true });
+    }
     const boton = h.querySelector(".boton-menu");
     const cerrar = () => { document.body.classList.remove("menu-abierto"); boton.setAttribute("aria-expanded", "false"); };
     boton.addEventListener("click", () => { document.body.classList.add("menu-abierto"); boton.setAttribute("aria-expanded", "true"); });
@@ -179,22 +189,26 @@
     f.className = "pie";
     f.innerHTML =
       '<div class="contenedor">' +
-        '<img class="pie-logo" src="img/logo-azul.png" alt="' + esc(C.NOMBRE) + '" loading="lazy">' +
+        '<img class="pie-logo" src="img/logo-blanco.png" alt="' + esc(C.NOMBRE) + '" loading="lazy">' +
         '<nav class="pie-links">' +
           '<a href="index.html#haras">El Haras</a><a href="index.html#padrillos">Padrillos</a><a href="venta.html">En venta</a>' +
           '<a href="plantel.html">Plantel</a><a href="index.html#contacto">Contacto</a>' +
           '<a href="' + C.INSTAGRAM + '" target="_blank" rel="noopener">Instagram</a><a href="' + C.FACEBOOK + '" target="_blank" rel="noopener">Facebook</a>' +
         '</nav>' +
         '<p class="pie-datos">' + esc(C.DIRECCION) + ' · <a href="' + waLink() + '" target="_blank" rel="noopener">' + esc(C.TELEFONO) + '</a> · <a href="mailto:' + C.EMAIL + '">' + esc(C.EMAIL) + '</a></p>' +
-        '<p class="pie-legal">© ' + new Date().getFullYear() + ' ' + esc(C.NOMBRE) + '</p>' +
+        '<p class="pie-legal">© ' + new Date().getFullYear() + ' ' + esc(C.NOMBRE) + ' · San José, Uruguay</p>' +
       '</div>';
     document.body.appendChild(f);
+    const wa = document.createElement("a");
+    wa.className = "wa-flotante"; wa.href = waLink(); wa.target = "_blank"; wa.rel = "noopener";
+    wa.setAttribute("aria-label", "Escribir por WhatsApp"); wa.innerHTML = ICONOS.whatsapp;
+    document.body.appendChild(wa);
   }
 
   /* ---------- Aparición al hacer scroll ---------- */
   let observador = null;
   function animar(raiz) {
-    const els = (raiz || document).querySelectorAll(".aparecer:not(.visible)");
+    const els = (raiz || document).querySelectorAll(".revela:not(.visible)");
     if (!("IntersectionObserver" in window)) { els.forEach((e) => e.classList.add("visible")); return; }
     if (!observador) {
       observador = new IntersectionObserver((entradas) => {
@@ -229,7 +243,7 @@
     document.body.style.overflow = "";
   }
   function abrirFilm() {
-    const m = abrirModal('<video src="video/haras-film.mp4" controls autoplay playsinline></video>');
+    const m = abrirModal('<video src="video/haras-film.mp4" poster="video/fondo-movil.jpg" controls autoplay playsinline></video>');
     const v = m.querySelector("video");
     v.volume = 0.8;
   }
