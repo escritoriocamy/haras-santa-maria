@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel · Haras Santa María de Juncal</title>
+<meta name="theme-color" content="#13202c">
+<link rel="icon" type="image/png" href="img/marca-azul.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+<style>
+  body { background: var(--papel); font-size: 18px; }
+  .barra { background: var(--tinta); color: #fff; position: sticky; top: 0; z-index: 30; }
+  .barra .contenedor { display: flex; align-items: center; justify-content: space-between; min-height: 72px; gap: 16px; }
+  .barra .marca { color: #fff; }
+  .barra .marca-azul { display: none; }
+  .barra .marca-blanco { display: block; }
+  .barra-acciones { display: flex; gap: 10px; align-items: center; }
+  .barra-acciones a, .barra-acciones button { background: none; border: 1px solid rgba(255,255,255,.35); color: #fff; padding: 9px 16px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+  .barra-acciones a:hover, .barra-acciones button:hover { background: #fff; color: var(--tinta); }
+
+  .panel { padding: 50px 0 140px; }
+  .panel h1 { font-size: clamp(40px, 5vw, 56px); }
+  .ayuda { color: var(--suave); font-size: 17px; margin-top: 8px; }
+
+  .login { max-width: 460px; margin: 10vh auto; background: var(--blanco); border: 1px solid var(--linea); padding: 48px 40px; text-align: center; }
+  .login img { width: 150px; margin: 0 auto 26px; }
+  .login input { width: 100%; font: inherit; font-size: 22px; text-align: center; letter-spacing: .2em; padding: 16px; border: 1px solid var(--linea); margin: 22px 0 14px; background: var(--papel); }
+  .login input:focus { outline: none; border-color: var(--tinta); }
+  .error { color: var(--rojo); font-size: 16px; min-height: 24px; }
+
+  .aviso { background: #fbf6ea; border: 1px solid #e6d6b0; border-left: 4px solid var(--bronce); padding: 22px 24px; margin: 26px 0; font-size: 16.5px; }
+  .aviso b { color: var(--tinta); }
+
+  .lista-panel { margin-top: 34px; display: grid; gap: 14px; }
+  .fila-panel { display: grid; grid-template-columns: 96px 1fr auto; gap: 20px; align-items: center; background: var(--blanco); border: 1px solid var(--linea); padding: 14px; }
+  .fila-panel img { width: 96px; height: 76px; object-fit: cover; background: var(--papel-2); }
+  .fila-panel h3 { font-size: 28px; }
+  .fila-panel .meta { font-size: 14.5px; color: var(--suave); }
+  .fila-acciones { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+  .mini { min-height: 44px; padding: 0 16px; font-size: 12px; }
+  .mini.peligro { background: transparent; color: var(--rojo); border-color: #e2c3bb; }
+  .mini.peligro:hover { background: var(--rojo); color: #fff; border-color: var(--rojo); }
+  .vacio-panel { text-align: center; padding: 60px 20px; background: var(--blanco); border: 1px dashed var(--linea); color: var(--suave); }
+  @media (max-width: 700px) {
+    .fila-panel { grid-template-columns: 76px 1fr; }
+    .fila-panel img { width: 76px; height: 64px; }
+    .fila-acciones { grid-column: 1 / -1; justify-content: stretch; }
+    .fila-acciones > * { flex: 1; }
+  }
+
+  .paso { background: var(--blanco); border: 1px solid var(--linea); padding: clamp(24px, 4vw, 40px); margin-top: 22px; }
+  .paso-titulo { display: flex; align-items: baseline; gap: 16px; margin-bottom: 6px; }
+  .paso-num { font-family: var(--serif); font-size: 44px; color: var(--bronce); line-height: 1; }
+  .paso h2 { font-size: 32px; }
+  .grilla-campos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 26px; margin-top: 24px; }
+  .grilla-campos .completo { grid-column: 1 / -1; }
+  @media (max-width: 640px) { .grilla-campos { grid-template-columns: 1fr; } }
+  .c label { display: block; font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--texto); margin-bottom: 8px; }
+  .c label small { text-transform: none; letter-spacing: 0; font-weight: 600; color: var(--suave); }
+  .c input, .c select, .c textarea { width: 100%; font: inherit; font-size: 18px; color: var(--tinta); background: var(--papel); border: 1px solid var(--linea); padding: 13px 14px; border-radius: 2px; min-height: 54px; }
+  .c textarea { min-height: 130px; resize: vertical; line-height: 1.55; }
+  .c input:focus, .c select:focus, .c textarea:focus { outline: none; border-color: var(--tinta); background: #fff; }
+  .check { display: flex; align-items: center; gap: 12px; font-size: 17px; cursor: pointer; padding: 10px 0; }
+  .check input { width: 24px; height: 24px; accent-color: var(--tinta); }
+
+  .zona { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border: 2px dashed var(--linea); background: var(--papel); padding: 34px 20px; text-align: center; cursor: pointer; margin-top: 22px; transition: border-color .3s, background .3s; }
+  .zona:hover, .zona.encima { border-color: var(--tinta); background: #fff; }
+  .zona strong { font-family: var(--serif); font-size: 26px; color: var(--tinta); font-weight: 500; }
+  .zona span { color: var(--suave); font-size: 15.5px; }
+  .fotos-panel { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; margin-top: 20px; }
+  .foto-p { position: relative; background: var(--papel-2); border: 1px solid var(--linea); }
+  .foto-p img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .foto-p .portada-tag { position: absolute; left: 8px; top: 8px; background: var(--tinta); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; padding: 4px 8px; }
+  .foto-p .acciones-foto { display: grid; grid-template-columns: 1fr 1fr 1fr; border-top: 1px solid var(--linea); }
+  .foto-p .acciones-foto button { background: var(--blanco); border: 0; border-left: 1px solid var(--linea); min-height: 44px; font-size: 18px; }
+  .foto-p .acciones-foto button:first-child { border-left: 0; }
+  .foto-p .acciones-foto button:hover { background: var(--papel-2); }
+  .foto-p.subiendo img { opacity: .4; }
+  .foto-p .estado-subida { position: absolute; inset: 0 0 45px 0; display: grid; place-items: center; font-size: 14px; font-weight: 700; color: var(--tinta); }
+  .barra-progreso { height: 8px; background: var(--papel-2); margin-top: 14px; overflow: hidden; }
+  .barra-progreso div { height: 100%; width: 0; background: var(--verde); transition: width .3s; }
+
+  .arbol-editor { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(8, auto); gap: 8px 14px; margin-top: 22px; }
+  .arbol-editor .c label { font-size: 11px; margin-bottom: 4px; color: var(--suave); }
+  .arbol-editor .c input { min-height: 46px; font-size: 16px; padding: 10px 12px; }
+  .arbol-editor .g1 { grid-column: 1; align-self: center; }
+  .arbol-editor .g2 { grid-column: 2; align-self: center; }
+  @media (max-width: 700px) {
+    .arbol-editor { grid-template-columns: 1fr; grid-template-rows: none; }
+    .arbol-editor .c { grid-column: 1 !important; grid-row: auto !important; }
+  }
+
+  .guardar-barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: rgba(255,253,249,.97); border-top: 1px solid var(--linea); box-shadow: 0 -10px 30px -20px rgba(0,0,0,.3); }
+  .guardar-barra .contenedor { display: flex; gap: 12px; align-items: center; justify-content: space-between; min-height: 84px; flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
+  .guardar-barra .estado-guardado { color: var(--suave); font-size: 16px; }
+  .guardar-barra .botones { display: flex; gap: 10px; }
+  .toast { position: fixed; left: 50%; bottom: 110px; transform: translateX(-50%); z-index: 60; background: var(--tinta); color: #fff; padding: 16px 24px; font-size: 16px; box-shadow: var(--sombra); max-width: calc(100% - 32px); }
+  .toast.error-t { background: var(--rojo); }
+  .wa-flotante { display: none; }
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <div class="contenedor">
+    <a class="marca" href="index.html">
+      <img class="marca-blanco" src="img/marca-blanco.png" alt="" width="52" height="40" style="height:36px;width:auto">
+      <span class="marca-texto"><small>Panel</small><strong>Santa María</strong><span>de Juncal</span></span>
+    </a>
+    <div class="barra-acciones">
+      <a href="venta.html" target="_blank" rel="noopener">Ver la web</a>
+      <button type="button" id="salir" class="oculto">Salir</button>
+    </div>
+  </div>
+</header>
+
+<main class="panel">
+  <div class="contenedor" style="max-width:1000px">
+
+    <!-- Sin conexión configurada -->
+    <section id="v-sin-conexion" class="oculto">
+      <h1>Panel del Haras</h1>
+      <div class="aviso"><b>El panel todavía no está conectado.</b><br>
+        Falta publicar el script de Google (archivo <code>apps-script-haras.gs</code>) y pegar su dirección en <code>js/config.js</code>, en <code>SCRIPT_URL</code>. Las instrucciones están al principio del script.</div>
+    </section>
+
+    <!-- Ingreso -->
+    <section id="v-login" class="oculto">
+      <form class="login" id="form-login">
+        <img src="img/logo-azul.png" alt="Haras Santa María de Juncal">
+        <h1 style="font-size:34px">Panel de ejemplares</h1>
+        <p class="ayuda">Ingresá la clave para publicar y editar caballos en venta.</p>
+        <input type="password" id="clave" autocomplete="current-password" placeholder="Clave" aria-label="Clave" required>
+        <div class="error" id="error-login"></div>
+        <button class="boton ancho" type="submit">Entrar</button>
+      </form>
+    </section>
+
+    <!-- Lista -->
+    <section id="v-lista" class="oculto">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
+        <div>
+          <h1>Ejemplares</h1>
+          <p class="ayuda">Todo lo que se publica acá aparece en la sección “En venta” de la web.</p>
+        </div>
+        <button class="boton" type="button" id="nuevo">+ Publicar un ejemplar</button>
+      </div>
+      <div class="lista-panel" id="lista-panel"><p class="cargando">Cargando…</p></div>
+    </section>
+
+    <!-- Editor -->
+    <section id="v-editor" class="oculto">
+      <button type="button" class="enlace" id="volver" style="background:none;border:0;border-bottom:1px solid var(--bronce);padding:0 0 6px;margin-bottom:26px">← Volver a la lista</button>
+      <h1 id="titulo-editor">Nuevo ejemplar</h1>
+      <p class="ayuda">Completá lo que tengas. Lo único obligatorio es el nombre. Podés guardar y seguir completando después.</p>
+
+      <form id="form-ej" autocomplete="off">
+        <div class="paso">
+          <div class="paso-titulo"><span class="paso-num">1</span><h2>Datos del ejemplar</h2></div>
+          <div class="grilla-campos">
+            <div class="c completo"><label for="nombre">Nombre *</label><input id="nombre" required maxlength="80"></div>
+            <div class="c"><label for="sexo">Sexo</label>
+              <select id="sexo"><option>Macho</option><option>Hembra</option><option>Macho castrado</option></select></div>
+            <div class="c"><label for="pelaje">Pelaje</label>
+              <input id="pelaje" list="pelajes" placeholder="Ej.: Zaino">
+              <datalist id="pelajes"><option>Zaino</option><option>Zaina</option><option>Alazán</option><option>Alazana</option><option>Tordillo</option><option>Tordilla</option><option>Moro</option><option>Mora</option><option>Colorado</option><option>Colorada</option><option>Oscuro</option><option>Oscura</option></datalist></div>
+            <div class="c"><label for="nacimiento">Fecha de nacimiento <small>(o solo el año)</small></label><input id="nacimiento" placeholder="Ej.: 2023-09-14 o 2023"></div>
+            <div class="c"><label for="pais">País</label><input id="pais" value="Uruguay"></div>
+            <div class="c completo"><label for="ubicacion">Dónde está</label><input id="ubicacion" value="Haras Santa María de Juncal, San José"></div>
+          </div>
+        </div>
+
+        <div class="paso">
+          <div class="paso-titulo"><span class="paso-num">2</span><h2>Fotos</h2></div>
+          <p class="ayuda">La primera foto es la que se ve en la tarjeta. Con las flechas ◀ ▶ cambiás el orden.</p>
+          <label class="zona" id="zona-fotos">
+            <strong>Tocá acá para elegir fotos</strong>
+            <span>o arrastralas a este recuadro · se achican solas para que la web cargue rápido</span>
+            <input type="file" id="input-fotos" accept="image/*" multiple class="oculto">
+          </label>
+          <div class="fotos-panel" id="fotos-panel"></div>
+        </div>
+
+        <div class="paso">
+          <div class="paso-titulo"><span class="paso-num">3</span><h2>Video</h2></div>
+          <p class="ayuda">Subí el video desde el celular o la computadora, o pegá un link de YouTube.</p>
+          <label class="zona" id="zona-video">
+            <strong>Tocá acá para subir un video</strong>
+            <span>Puede ser largo: se sube en partes a Google Drive</span>
+            <input type="file" id="input-video" accept="video/*" class="oculto">
+          </label>
+          <div class="barra-progreso oculto" id="prog-video"><div></div></div>
+          <p class="ayuda oculto" id="estado-video"></p>
+          <div class="grilla-campos">
+            <div class="c completo"><label for="video">Link del video <small>(se completa solo al subirlo)</small></label><input id="video" placeholder="https://www.youtube.com/watch?v=…"></div>
+          </div>
+        </div>
+
+        <div class="paso">
+          <div class="paso-titulo"><span class="paso-num">4</span><h2>Sangre</h2></div>
+          <p class="ayuda">Escribí el padre y la madre. Si están en el plantel del Haras, tocá “Completar el árbol” y se llenan los abuelos solos.</p>
+          <div class="grilla-campos">
+            <div class="c"><label for="ped-p">Padre</label><input id="ped-p" list="lista-padres" data-ped="p"></div>
+            <div class="c"><label for="ped-m">Madre</label><input id="ped-m" list="lista-madres" data-ped="m"></div>
+          </div>
+          <datalist id="lista-padres"></datalist><datalist id="lista-madres"></datalist>
+          <p style="margin-top:20px"><button class="boton claro mini" type="button" id="completar">Completar el árbol</button></p>
+          <div class="arbol-editor" id="arbol-editor"></div>
+        </div>
+
+        <div class="paso">
+          <div class="paso-titulo"><span class="paso-num">5</span><h2>Padre y madre</h2></div>
+          <p class="ayuda">Unas líneas sobre cada uno: campaña, producción, logros.</p>
+          <div class="grilla-campos">
+            <div class="c completo"><label for="info_padre">Sobre el padre</label><textarea id="info_padre"></textarea></div>
+            <div class="c completo"><label for="info_madre">Sobre la madre</label><textarea id="info_madre"></textarea></div>
+          </div>
+        </div>
+
+        <div class="paso">
+          <div class="paso-titulo"><span class="paso-num">6</span><h2>Descripción</h2></div>
+          <div class="grilla-campos">
+            <div class="c completo"><label for="descripcion">Cómo es el ejemplar</label><textarea id="descripcion" placeholder="Estructura, temperamento, manejo…"></textarea></div>
+            <div class="c completo"><label for="campana">Campaña <small>(carreras, si corrió)</small></label><textarea id="campana" placeholder="Ej.: Sin debutar."></textarea></div>
+            <div class="c completo"><label for="observaciones">Observaciones <small>(sanidad, documentación, etc.)</small></label><textarea id="observaciones"></textarea></div>
+          </div>
+        </div>
+
+        <div class="paso">
+          <div class="paso-titulo"><span class="paso-num">7</span><h2>Precio y publicación</h2></div>
+          <div class="grilla-campos">
+            <div class="c"><label for="precio">Precio</label><input id="precio" inputmode="numeric" placeholder="Ej.: 12000"></div>
+            <div class="c"><label for="moneda">Moneda</label><select id="moneda"><option value="USD">Dólares (USD)</option><option value="$">Pesos ($)</option></select></div>
+            <div class="c completo"><label class="check"><input type="checkbox" id="mostrar_precio"> Mostrar el precio en la web <small style="color:var(--suave)">(si no, dice “A consultar”)</small></label></div>
+            <div class="c"><label for="estado">Estado</label>
+              <select id="estado"><option>Disponible</option><option>Reservado</option><option>Vendido</option><option value="Oculto">Oculto (no se ve en la web)</option></select></div>
+            <div class="c"><label for="orden">Orden en la lista <small>(1 = primero)</small></label><input id="orden" inputmode="numeric"></div>
+            <div class="c completo"><label class="check"><input type="checkbox" id="destacado"> Destacado (aparece primero en la portada)</label></div>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
+
+<div class="guardar-barra oculto" id="guardar-barra">
+  <div class="contenedor" style="max-width:1000px">
+    <span class="estado-guardado" id="estado-guardado">Sin guardar</span>
+    <div class="botones">
+      <a class="boton claro mini oculto" id="ver-ficha" target="_blank" rel="noopener">Ver cómo quedó</a>
+      <button class="boton" type="button" id="guardar">Guardar y publicar</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/comun.js"></script>
+<script>
+(function () {
+  const C = window.HARAS, H = window.Haras, esc = H.esc;
+  const $ = (id) => document.getElementById(id);
+  const vistas = ["v-sin-conexion", "v-login", "v-lista", "v-editor"];
+  const ver = (v) => { vistas.forEach((x) => $(x).classList.toggle("oculto", x !== v)); $("guardar-barra").classList.toggle("oculto", v !== "v-editor"); window.scrollTo(0, 0); };
+
+  const PEDIGRI = ["p", "m", "pp", "pm", "mp", "mm", "ppp", "ppm", "pmp", "pmm", "mpp", "mpm", "mmp", "mmm"];
+  const ETIQ = { pp: "Padre del padre", pm: "Madre del padre", mp: "Padre de la madre", mm: "Madre de la madre",
+    ppp: "Bisabuelo", ppm: "Bisabuela", pmp: "Bisabuelo", pmm: "Bisabuela", mpp: "Bisabuelo", mpm: "Bisabuela", mmp: "Bisabuelo", mmm: "Bisabuela" };
+  const FILA = { pp: "1 / span 2", pm: "3 / span 2", mp: "5 / span 2", mm: "7 / span 2", ppp: "1", ppm: "2", pmp: "3", pmm: "4", mpp: "5", mpm: "6", mmp: "7", mmm: "8" };
+
+  /* Padrillos conocidos: se usan para completar el árbol y sugerir el texto */
+  const PADRILLOS = {
+    "the leopard": { pp: "Storm Cat", pm: "Moon Safari", ppp: "Storm Bird", ppm: "Terlingua", pmp: "Mr. Prospector",
+      info: "Padrillo norteamericano (2005) por Storm Cat y Moon Safari, por Mr. Prospector. Líder absoluto de la estadística de padrillos de dosañeros en 2024 y padre de múltiples ganadores clásicos, entre ellos Justice Cat, ganador del Gran Premio Pedro Piñeyrúa (G1)." },
+    "holy boss": { info: "Padrillo norteamericano en servicio en el Haras Santa María de Juncal. Padre del sprinter Capo Boss en Maroñas y de tres ganadores clásicos en Argentina." }
+  };
+  const PAISES = { URU: "Uruguay", ARG: "Argentina", BRA: "Brasil", USA: "Estados Unidos", CHI: "Chile" };
+  let plantel = { yeguas: [], produccion: [] };
+
+  let clave = "";
+  try { clave = localStorage.getItem("haras-clave") || ""; } catch (e) {}
+  let actual = null;       // ejemplar que se está editando
+  let fotos = [];          // [{url}] o [{subiendo, previa}]
+  let cambios = false;
+
+  /* ---------- Comunicación con el script ---------- */
+  async function post(obj, intentos) {
+    intentos = intentos || 2;
+    for (let i = 0; i < intentos; i++) {
+      try {
+        const r = await fetch(C.SCRIPT_URL, { method: "POST", body: JSON.stringify(Object.assign({ clave: clave }, obj)) });
+        return await r.json();
+      } catch (err) {
+        if (i === intentos - 1) return { success: false, message: "No hay conexión. Revisá internet y probá de nuevo." };
+        await new Promise((ok) => setTimeout(ok, 1500));
+      }
+    }
+  }
+  function aviso(texto, error) {
+    document.querySelectorAll(".toast").forEach((x) => x.remove());
+    const t = document.createElement("div");
+    t.className = "toast" + (error ? " error-t" : "");
+    t.textContent = texto;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), error ? 6000 : 3500);
+  }
+
+  /* ---------- Ingreso ---------- */
+  async function entrar() {
+    $("error-login").textContent = "";
+    const r = await post({ accion: "verificarClave" });
+    if (!r.success) {
+      try { localStorage.removeItem("haras-clave"); } catch (e) {}
+      ver("v-login");
+      if (clave) $("error-login").textContent = r.message || "Clave incorrecta.";
+      return;
+    }
+    try { localStorage.setItem("haras-clave", clave); } catch (e) {}
+    $("salir").classList.remove("oculto");
+    cargarLista();
+  }
+  $("form-login").addEventListener("submit", (ev) => { ev.preventDefault(); clave = $("clave").value.trim(); entrar(); });
+  $("salir").addEventListener("click", () => { clave = ""; try { localStorage.removeItem("haras-clave"); } catch (e) {} $("salir").classList.add("oculto"); ver("v-login"); });
+
+  /* ---------- Lista ---------- */
+  let lista = [];
+  async function cargarLista() {
+    ver("v-lista");
+    $("lista-panel").innerHTML = '<p class="cargando">Cargando…</p>';
+    try {
+      const r = await fetch(C.SCRIPT_URL + "?accion=panelListar&clave=" + encodeURIComponent(clave), { cache: "no-store" });
+      const j = await r.json();
+      if (!j.success) throw new Error(j.message);
+      lista = j.ejemplares || [];
+    } catch (err) {
+      $("lista-panel").innerHTML = '<div class="aviso">No se pudo cargar la lista: ' + esc(err.message || "sin conexión") + '</div>';
+      return;
+    }
+    if (!lista.length) {
+      $("lista-panel").innerHTML = '<div class="vacio-panel"><p style="font-family:var(--serif);font-size:26px;color:var(--tinta)">Todavía no hay ejemplares publicados.</p><p>Tocá “Publicar un ejemplar” para cargar el primero.</p></div>';
+      return;
+    }
+    $("lista-panel").innerHTML = lista.map((e) =>
+      '<div class="fila-panel">' +
+        '<img src="' + esc(e.fotos[0] ? H.foto(e.fotos[0], 300) : "img/marca-azul.png") + '" alt="">' +
+        '<div><h3>' + esc(e.nombre) + '</h3><div class="meta">' + esc([e.estado, H.sexoTexto(e.sexo), H.anioNac(e), e.fotos.length + " fotos", e.video ? "con video" : ""].filter(Boolean).join(" · ")) + '</div></div>' +
+        '<div class="fila-acciones">' +
+          '<button class="boton mini" data-editar="' + esc(e.id) + '">Editar</button>' +
+          '<a class="boton claro mini" href="ejemplar.html?id=' + encodeURIComponent(e.id) + '" target="_blank" rel="noopener">Ver</a>' +
+          '<button class="boton mini peligro" data-borrar="' + esc(e.id) + '">Borrar</button>' +
+        '</div>' +
+      '</div>').join("");
+  }
+  $("lista-panel").addEventListener("click", async (ev) => {
+    const ed = ev.target.closest("[data-editar]");
+    const bo = ev.target.closest("[data-borrar]");
+    if (ed) abrirEditor(lista.find((e) => e.id === ed.dataset.editar));
+    if (bo) {
+      const e = lista.find((x) => x.id === bo.dataset.borrar);
+      if (!confirm("¿Borrar “" + e.nombre + "” de la web?\n\nSi solo se vendió, mejor editalo y poné Estado: Vendido.")) return;
+      const r = await post({ accion: "borrar", id: e.id });
+      if (r.success) { aviso("Ejemplar borrado."); cargarLista(); } else aviso(r.message, true);
+    }
+  });
+  $("nuevo").addEventListener("click", () => abrirEditor(null));
+  $("volver").addEventListener("click", () => {
+    if (cambios && !confirm("Hay cambios sin guardar. ¿Salir igual?")) return;
+    cargarLista();
+  });
+
+  /* ---------- Editor ---------- */
+  const CAMPOS = ["nombre", "sexo", "pelaje", "nacimiento", "pais", "ubicacion", "video", "info_padre", "info_madre", "descripcion", "campana", "observaciones", "precio", "moneda", "estado", "orden"];
+
+  $("arbol-editor").innerHTML = PEDIGRI.slice(2).map((k) =>
+    '<div class="c g' + (k.length - 1) + '" style="grid-row:' + FILA[k] + '"><label for="ped-' + k + '">' + ETIQ[k] + '</label><input id="ped-' + k + '" data-ped="' + k + '"></div>').join("");
+
+  function abrirEditor(e) {
+    actual = e;
+    $("form-ej").reset();
+    $("titulo-editor").textContent = e ? e.nombre : "Nuevo ejemplar";
+    if (e) {
+      CAMPOS.forEach((c) => { if (e[c] !== undefined && e[c] !== null) $(c).value = e[c]; });
+      $("mostrar_precio").checked = !!e.mostrar_precio;
+      $("destacado").checked = !!e.destacado;
+      PEDIGRI.forEach((k) => { $("ped-" + k).value = (e.ped || {})[k] || ""; });
+      fotos = e.fotos.map((u) => ({ url: u }));
+    } else {
+      fotos = [];
+    }
+    pintarFotos();
+    $("prog-video").classList.add("oculto");
+    $("estado-video").classList.add("oculto");
+    $("ver-ficha").classList.toggle("oculto", !e);
+    if (e) $("ver-ficha").href = "ejemplar.html?id=" + encodeURIComponent(e.id);
+    cambios = false;
+    $("estado-guardado").textContent = e ? "Guardado" : "Sin guardar";
+    ver("v-editor");
+  }
+  $("form-ej").addEventListener("input", () => { cambios = true; $("estado-guardado").textContent = "Hay cambios sin guardar"; });
+
+  function leerFormulario() {
+    const e = { id: actual ? actual.id : "" };
+    CAMPOS.forEach((c) => { e[c] = $(c).value.trim(); });
+    e.mostrar_precio = $("mostrar_precio").checked;
+    e.destacado = $("destacado").checked;
+    e.ped = {};
+    PEDIGRI.forEach((k) => { e.ped[k] = $("ped-" + k).value.trim(); });
+    e.fotos = fotos.filter((f) => f.url).map((f) => f.url);
+    return e;
+  }
+
+  $("guardar").addEventListener("click", async () => {
+    const e = leerFormulario();
+    if (!e.nombre) { aviso("Falta el nombre del ejemplar.", true); $("nombre").focus(); return; }
+    if (fotos.some((f) => f.subiendo)) { aviso("Esperá a que terminen de subir las fotos.", true); return; }
+    if (videoSubiendo) { aviso("Esperá a que termine de subir el video.", true); return; }
+    const b = $("guardar");
+    b.disabled = true; b.textContent = "Guardando…";
+    const r = await post({ accion: "guardar", ejemplar: e });
+    b.disabled = false; b.textContent = "Guardar y publicar";
+    if (!r.success) { aviso(r.message || "No se pudo guardar.", true); return; }
+    actual = Object.assign(e, { id: r.id });
+    cambios = false;
+    $("estado-guardado").textContent = "✓ Guardado y publicado";
+    $("titulo-editor").textContent = e.nombre;
+    $("ver-ficha").href = "ejemplar.html?id=" + encodeURIComponent(r.id);
+    $("ver-ficha").classList.remove("oculto");
+    aviso("¡Listo! " + e.nombre + " ya está en la web.");
+  });
+
+  /* ---------- Fotos ---------- */
+  function pintarFotos() {
+    $("fotos-panel").innerHTML = fotos.map((f, i) =>
+      '<div class="foto-p' + (f.subiendo ? " subiendo" : "") + '">' +
+        (i === 0 && !f.subiendo ? '<span class="portada-tag">Portada</span>' : "") +
+        '<img src="' + esc(f.previa || H.foto(f.url, 400)) + '" alt="">' +
+        (f.subiendo ? '<span class="estado-subida">Subiendo…</span>' : "") +
+        '<div class="acciones-foto">' +
+          '<button type="button" data-mover="-1" data-i="' + i + '" aria-label="Mover a la izquierda">◀</button>' +
+          '<button type="button" data-quitar="' + i + '" aria-label="Quitar foto">✕</button>' +
+          '<button type="button" data-mover="1" data-i="' + i + '" aria-label="Mover a la derecha">▶</button>' +
+        '</div>' +
+      '</div>').join("");
+  }
+  $("fotos-panel").addEventListener("click", (ev) => {
+    const m = ev.target.closest("[data-mover]");
+    const q = ev.target.closest("[data-quitar]");
+    if (m) {
+      const i = Number(m.dataset.i), j = i + Number(m.dataset.mover);
+      if (j < 0 || j >= fotos.length) return;
+      [fotos[i], fotos[j]] = [fotos[j], fotos[i]];
+    }
+    if (q) {
+      if (!confirm("¿Quitar esta foto?")) return;
+      fotos.splice(Number(q.dataset.quitar), 1);
+    }
+    if (m || q) { cambios = true; $("estado-guardado").textContent = "Hay cambios sin guardar"; pintarFotos(); }
+  });
+
+  /* Achica la foto a 2000 px como máximo, en JPG */
+  function achicar(archivo) {
+    return new Promise((ok, mal) => {
+      const url = URL.createObjectURL(archivo);
+      const img = new Image();
+      img.onload = () => {
+        const max = 2000;
+        const k = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+        const c = document.createElement("canvas");
+        c.width = Math.round(img.naturalWidth * k);
+        c.height = Math.round(img.naturalHeight * k);
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url);
+        ok(c.toDataURL("image/jpeg", 0.86));
+      };
+      img.onerror = () => { URL.revokeObjectURL(url); mal(new Error("No se pudo leer la foto " + archivo.name + ". Probá con otra (JPG o PNG).")); };
+      img.src = url;
+    });
+  }
+
+  async function agregarFotos(archivos) {
+    const nombre = $("nombre").value.trim() || "Sin nombre";
+    for (const archivo of archivos) {
+      if (!/^image\//.test(archivo.type)) continue;
+      let datos;
+      try { datos = await achicar(archivo); } catch (err) { aviso(err.message, true); continue; }
+      const item = { subiendo: true, previa: datos };
+      fotos.push(item);
+      pintarFotos();
+      const r = await post({ accion: "subirFoto", carpeta: nombre, nombre: archivo.name.replace(/\.\w+$/, "") + ".jpg", mimeType: "image/jpeg", base64: datos.split(",")[1] }, 3);
+      if (r.success) { item.url = r.url; item.subiendo = false; }
+      else { fotos.splice(fotos.indexOf(item), 1); aviso("No se pudo subir " + archivo.name + ": " + (r.message || ""), true); }
+      cambios = true;
+      $("estado-guardado").textContent = "Hay cambios sin guardar";
+      pintarFotos();
+    }
+  }
+  $("input-fotos").addEventListener("change", (ev) => { agregarFotos([...ev.target.files]); ev.target.value = ""; });
+  const zona = $("zona-fotos");
+  zona.addEventListener("dragover", (ev) => { ev.preventDefault(); zona.classList.add("encima"); });
+  zona.addEventListener("dragleave", () => zona.classList.remove("encima"));
+  zona.addEventListener("drop", (ev) => { ev.preventDefault(); zona.classList.remove("encima"); agregarFotos([...ev.dataTransfer.files]); });
+
+  /* ---------- Video (subida en partes a Google Drive) ---------- */
+  let videoSubiendo = false;
+  const PARTE = 8 * 1024 * 1024;
+  const PARTE_PLAN_B = 4 * 1024 * 1024;
+  function aBase64(blob) {
+    return new Promise((ok) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(",")[1]); r.readAsDataURL(blob); });
+  }
+  async function subirVideo(archivo) {
+    const barra = $("prog-video"), estado = $("estado-video");
+    barra.classList.remove("oculto"); estado.classList.remove("oculto");
+    const progreso = (n) => { barra.firstElementChild.style.width = Math.round(n * 100) + "%"; estado.textContent = "Subiendo video… " + Math.round(n * 100) + "% — no cierres esta página."; };
+    videoSubiendo = true;
+    progreso(0);
+    try {
+      const total = archivo.size;
+      const ini = await post({ accion: "iniciarSubidaVideo", total: total, mimeType: archivo.type || "video/mp4", nombre: archivo.name, carpeta: $("nombre").value.trim() || "Sin nombre", origen: location.origin });
+      if (!ini.success) throw new Error(ini.message);
+      let inicio = 0, idArchivo = "", directo = true;
+      while (!idArchivo) {
+        if (directo) {
+          const fin = Math.min(inicio + PARTE, total);
+          try {
+            const r = await fetch(ini.sesion, { method: "PUT", headers: { "Content-Range": "bytes " + inicio + "-" + (fin - 1) + "/" + total }, body: archivo.slice(inicio, fin) });
+            if (r.status === 200 || r.status === 201) { idArchivo = (await r.json()).id; break; }
+            if (r.status === 308) { const m = (r.headers.get("Range") || "").match(/bytes=0-(\d+)/); inicio = m ? Number(m[1]) + 1 : fin; progreso(inicio / total); continue; }
+            throw new Error("Drive respondió " + r.status);
+          } catch (err) {
+            directo = false; // el navegador no puede hablar directo con Drive: se manda por el script
+            continue;
+          }
+        }
+        const fin = Math.min(inicio + PARTE_PLAN_B, total);
+        const r = await post({ accion: "subirParteVideo", sesion: ini.sesion, total: total, inicio: inicio, base64: await aBase64(archivo.slice(inicio, fin)) }, 3);
+        if (!r.success) throw new Error(r.message);
+        if (r.terminado) { idArchivo = r.id; break; }
+        inicio = r.siguiente || fin;
+        progreso(inicio / total);
+      }
+      const pub = await post({ accion: "publicarVideo", idArchivo: idArchivo });
+      if (!pub.success) throw new Error(pub.message);
+      $("video").value = pub.url;
+      progreso(1);
+      estado.textContent = "✓ Video subido. Acordate de tocar “Guardar y publicar”. (Drive puede tardar unos minutos en procesarlo.)";
+      cambios = true;
+      $("estado-guardado").textContent = "Hay cambios sin guardar";
+    } catch (err) {
+      estado.textContent = "No se pudo subir el video: " + (err.message || "") + ". Probá de nuevo.";
+      aviso("No se pudo subir el video.", true);
+    } finally {
+      videoSubiendo = false;
+    }
+  }
+  $("input-video").addEventListener("change", (ev) => { const f = ev.target.files[0]; if (f) subirVideo(f); ev.target.value = ""; });
+
+  /* ---------- Árbol: completar con datos del plantel ---------- */
+  const sinPais = (s) => String(s || "").replace(/\s*\([A-Z]{2,3}\)\s*$/, "").trim();
+  const norm = (s) => sinPais(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+
+  fetch("data/plantel.json").then((r) => r.json()).then((d) => {
+    plantel = d;
+    const padres = new Set(["The Leopard (USA)", "Holy Boss (USA)"]);
+    d.produccion.forEach((p) => { if (p.padre && !/^the leopard$/i.test(p.padre)) padres.add(p.padre); });
+    $("lista-padres").innerHTML = [...padres].map((p) => '<option value="' + esc(p) + '">').join("");
+    $("lista-madres").innerHTML = d.yeguas.map((y) => '<option value="' + esc(y.nombre + " (" + y.pais + ")") + '">').join("");
+  }).catch(() => {});
+
+  function poner(k, v) { const el = $("ped-" + k); if (el && !el.value.trim() && v) { el.value = v; return 1; } return 0; }
+  $("completar").addEventListener("click", () => {
+    let n = 0;
+    const padre = PADRILLOS[norm($("ped-p").value)];
+    if (padre) {
+      ["pp", "pm", "ppp", "ppm", "pmp", "pmm"].forEach((k) => { n += poner(k, padre[k]); });
+      if (!$("info_padre").value.trim() && padre.info) { $("info_padre").value = padre.info; n++; }
+    }
+    const yegua = plantel.yeguas.find((y) => norm(y.nombre) === norm($("ped-m").value));
+    if (yegua) {
+      n += poner("mp", yegua.padre) + poner("mm", yegua.madre) + poner("mmp", yegua.abuelo);
+      const hijos = plantel.produccion.filter((p) => norm(p.madre) === norm(yegua.nombre)).map((p) => p.nombre);
+      if (!$("info_madre").value.trim()) {
+        $("info_madre").value = "Yegua madre del Haras, nacida en " + (PAISES[yegua.pais] || yegua.pais) + " en " + yegua.nac + ". Hija de " + yegua.padre + " y " + yegua.madre + (yegua.abuelo ? ", por " + yegua.abuelo : "") + "." +
+          (hijos.length ? " Madre de " + hijos.slice(0, 6).join(", ") + "." : "");
+        n++;
+      }
+    }
+    if (n) { cambios = true; $("estado-guardado").textContent = "Hay cambios sin guardar"; aviso("Se completaron " + n + " datos. Revisalos antes de guardar."); }
+    else aviso(padre || yegua ? "Ya estaba todo completo." : "No encontré ese padre o esa madre en el plantel. Completá el árbol a mano.", !(padre || yegua));
+  });
+
+  window.addEventListener("beforeunload", (ev) => { if (cambios || videoSubiendo || fotos.some((f) => f.subiendo)) { ev.preventDefault(); ev.returnValue = ""; } });
+
+  /* ---------- Arranque ---------- */
+  if (!C.SCRIPT_URL) ver("v-sin-conexion");
+  else if (clave) entrar();
+  else ver("v-login");
+})();
+</script>
+</body>
+</html>

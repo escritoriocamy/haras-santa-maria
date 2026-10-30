@@ -1,0 +1,56 @@
+[
+  {
+    "id": "ejemplo-1",
+    "estado": "Disponible",
+    "destacado": true,
+    "nombre": "Bruma del Juncal",
+    "sexo": "Hembra",
+    "pelaje": "Zaina",
+    "nacimiento": "2023-09-14",
+    "pais": "Uruguay",
+    "ubicacion": "Haras Santa María de Juncal, San José",
+    "descripcion": "Potranca de muy buena estructura, balanceada y de temperamento tranquilo. Criada a campo en el Haras, con manejo diario desde el destete.\n\nEsta es una ficha de ejemplo: así se verá cada ejemplar cuando se publique desde el panel.",
+    "campana": "Sin debutar.",
+    "observaciones": "Vacunas y desparasitaciones al día. Documentación del Stud Book en regla.",
+    "info_padre": "Padrillo norteamericano por Storm Cat, líder absoluto de la estadística de dosañeros en 2024 y padre de múltiples ganadores clásicos, entre ellos Justice Cat (G.P. Pedro Piñeyrúa, G1).",
+    "info_madre": "Yegua madre del Haras, nacida en Argentina en 2008. Hija de Southern Halo y Tweedy, por Roy.",
+    "precio": "",
+    "moneda": "USD",
+    "mostrar_precio": false,
+    "fotos": ["img/ig-yegua-potrillo.jpg", "img/v-potrillos.jpg", "img/v-cuidador.jpg", "img/v-cabestro.jpg"],
+    "video": "video/haras-film.mp4",
+    "ped": {
+      "p": "The Leopard (USA)", "m": "Twiga (ARG)",
+      "pp": "Storm Cat", "pm": "Moon Safari", "mp": "Southern Halo", "mm": "Tweedy",
+      "ppp": "Storm Bird", "ppm": "Terlingua", "pmp": "Mr. Prospector", "pmm": "",
+      "mpp": "Halo", "mpm": "Northern Sea", "mmp": "Roy", "mmm": ""
+    }
+  },
+  {
+    "id": "ejemplo-2",
+    "estado": "Disponible",
+    "destacado": false,
+    "nombre": "Cacique del Juncal",
+    "sexo": "Macho",
+    "pelaje": "Alazán",
+    "nacimiento": "2023-10-02",
+    "pais": "Uruguay",
+    "ubicacion": "Haras Santa María de Juncal, San José",
+    "descripcion": "Potrillo de buen porte y movimiento suelto, con muy buena disposición para el trabajo.\n\nEsta es una ficha de ejemplo: así se verá cada ejemplar cuando se publique desde el panel.",
+    "campana": "Sin debutar.",
+    "observaciones": "",
+    "info_padre": "",
+    "info_madre": "Yegua madre del Haras, nacida en Uruguay en 2008. Hija de Cagney y Que Mais, por Robin des Pins. Madre de Ammi Runner.",
+    "precio": "12000",
+    "moneda": "USD",
+    "mostrar_precio": true,
+    "fotos": ["img/v-camino.jpg", "img/v-luz-dorada.jpg", "img/v-atardecer.jpg"],
+    "video": "",
+    "ped": {
+      "p": "Red Runner", "m": "Programmi (URU)",
+      "pp": "", "pm": "", "mp": "Cagney", "mm": "Que Mais",
+      "ppp": "", "ppm": "", "pmp": "", "pmm": "",
+      "mpp": "", "mpm": "", "mmp": "Robin des Pins", "mmm": ""
+    }
+  }
+]

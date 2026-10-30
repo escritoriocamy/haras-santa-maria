@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ejemplar en venta · Haras Santa María de Juncal</title>
+<meta name="description" content="Ficha de ejemplar en venta: fotos, video, genealogía e información del padre y la madre. Haras Santa María de Juncal, San José, Uruguay.">
+<meta name="theme-color" content="#13202c">
+<link rel="icon" type="image/png" href="img/marca-azul.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<main id="ficha"><p class="cargando" style="padding-top:200px">Cargando ficha…</p></main>
+
+<script src="js/config.js"></script>
+<script src="js/comun.js"></script>
+<script>
+(function () {
+  const H = window.Haras;
+  const esc = H.esc;
+  H.encabezado("venta", false);
+  H.pie();
+
+  const id = new URLSearchParams(location.search).get("id");
+  const main = document.getElementById("ficha");
+
+  const ETIQUETAS = {
+    p: "Padre", m: "Madre",
+    pp: "Abuelo paterno", pm: "Abuela paterna", mp: "Abuelo materno", mm: "Abuela materna",
+    ppp: "Bisabuelo", ppm: "Bisabuela", pmp: "Bisabuelo", pmm: "Bisabuela",
+    mpp: "Bisabuelo", mpm: "Bisabuela", mmp: "Bisabuelo", mmm: "Bisabuela"
+  };
+  const POS = {
+    p: [2, "1 / span 4"], m: [2, "5 / span 4"],
+    pp: [3, "1 / span 2"], pm: [3, "3 / span 2"], mp: [3, "5 / span 2"], mm: [3, "7 / span 2"],
+    ppp: [4, "1"], ppm: [4, "2"], pmp: [4, "3"], pmm: [4, "4"], mpp: [4, "5"], mpm: [4, "6"], mmp: [4, "7"], mmm: [4, "8"]
+  };
+
+  function arbol(e) {
+    const p = e.ped || {};
+    let html = '<div class="pedigri"><div class="ped raiz"><small>Ejemplar</small><strong>' + esc(e.nombre) + '</strong></div>';
+    Object.keys(POS).forEach((k) => {
+      const gen = k.length;
+      const macho = k.slice(-1) === "p";
+      const nombre = String(p[k] || "").trim();
+      html += '<div class="ped g' + gen + " " + (macho ? "macho" : "hembra") + (nombre ? "" : " vacio") + '" style="grid-row:' + POS[k][1] + '">' +
+        '<small>' + ETIQUETAS[k] + '</small><strong>' + (nombre ? esc(nombre) : "—") + '</strong></div>';
+    });
+    return html + '</div>';
+  }
+
+  function medios(e) {
+    const lista = (e.fotos || []).map((f) => ({ tipo: "foto", src: f }));
+    if (e.video) lista.splice(Math.min(1, lista.length), 0, { tipo: "video", src: e.video });
+    return lista;
+  }
+
+  function pintarMedio(visor, m, nombre) {
+    if (m.tipo === "foto") {
+      visor.innerHTML = '<img src="' + esc(H.foto(m.src, 1800)) + '" alt="' + esc(nombre) + '">';
+      return;
+    }
+    const v = H.videoEmbed(m.src);
+    if (!v) return;
+    visor.innerHTML = v.tipo === "iframe"
+      ? '<iframe src="' + esc(v.src) + '" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video de ' + esc(nombre) + '"></iframe>'
+      : '<video class="vertical" src="' + esc(v.src) + '" controls playsinline autoplay></video>';
+  }
+
+  function render(e) {
+    document.title = e.nombre + " · En venta · Haras Santa María de Juncal";
+    const clase = H.estadoClase(e);
+    const ped = e.ped || {};
+    const anio = H.anioNac(e);
+    const precio = H.precioTexto(e);
+    const lista = medios(e);
+    const sub = [H.sexoTexto(e.sexo), e.pelaje, anio ? anio + (H.edadTexto(e) ? " (" + H.edadTexto(e) + ")" : "") : ""].filter(Boolean).map(esc).join(" · ");
+    const hijo = H.esHembra(e) ? "Hija" : "Hijo";
+    const msj = "Hola, me interesa el ejemplar " + e.nombre + " publicado en la web del Haras. " + location.href;
+
+    const filas = [
+      ["Sexo", H.sexoTexto(e.sexo)],
+      ["Pelaje", e.pelaje],
+      ["Nacimiento", e.nacimiento ? H.fechaLarga(e.nacimiento) : ""],
+      ["País", e.pais],
+      ["Criador", "Haras Santa María de Juncal"],
+      ["Ubicación", e.ubicacion],
+      ["Padre", ped.p],
+      ["Madre", ped.m],
+      ["Abuelo materno", ped.mp]
+    ].filter((f) => f[1]);
+
+    main.innerHTML =
+      '<section class="ficha-top"><div class="contenedor">' +
+        '<nav class="migas"><a href="index.html">Inicio</a><span>/</span><a href="venta.html">En venta</a><span>/</span><span>' + esc(e.nombre) + '</span></nav>' +
+        '<div class="ficha-grid">' +
+          '<div>' +
+            '<div class="visor" id="visor"></div>' +
+            (lista.length > 1 ? '<div class="miniaturas" id="miniaturas">' + lista.map((m, i) =>
+              '<button type="button" class="' + (m.tipo === "video" ? "es-video" : "") + '" data-i="' + i + '" aria-label="' + (m.tipo === "video" ? "Ver video" : "Ver foto " + (i + 1)) + '">' +
+                '<img src="' + esc(m.tipo === "foto" ? H.foto(m.src, 300) : H.foto((e.fotos || [])[0] || "img/v-potrillos.jpg", 300)) + '" alt="" loading="lazy"></button>').join("") + '</div>' : "") +
+          '</div>' +
+          '<aside class="ficha-info">' +
+            '<span class="estado-pill ' + clase + '">' + (clase === "vendido" ? "Vendido" : clase === "reservado" ? "Reservado" : "Disponible") + '</span>' +
+            (e.ejemplo ? ' <span class="estado-pill" style="background:var(--tinta);color:#fff">Ficha de ejemplo</span>' : "") +
+            '<h1>' + esc(e.nombre) + '</h1>' +
+            '<div class="ficha-sub">' + sub + '</div>' +
+            (ped.p || ped.m ? '<p class="ficha-sangre">' + hijo + ' de <b>' + esc(ped.p || "—") + '</b> y <b>' + esc(ped.m || "—") + '</b>' + (ped.mp ? ', por ' + esc(ped.mp) : "") + '.</p>' : "") +
+            '<div class="ficha-precio"><small>' + (clase === "vendido" ? "Estado" : "Precio") + '</small><strong>' + (clase === "vendido" ? "Vendido" : precio || "A consultar") + '</strong></div>' +
+            '<div class="ficha-acciones">' +
+              (clase !== "vendido" ? '<a class="boton whatsapp ancho" target="_blank" rel="noopener" href="' + H.waLink(msj) + '">' + H.ICONOS.whatsapp + 'Consultar por WhatsApp</a>' : "") +
+              '<a class="boton claro ancho" href="#consulta">Enviar consulta</a>' +
+            '</div>' +
+            '<button class="compartir" type="button" id="compartir">' + H.ICONOS.compartir + 'Compartir esta ficha</button>' +
+          '</aside>' +
+        '</div>' +
+      '</div></section>' +
+
+      '<section class="seccion" style="padding-bottom:60px"><div class="contenedor"><div class="dos-col">' +
+        '<div class="aparecer"><div class="antetitulo">Ficha técnica</div>' +
+          '<table class="tabla-ficha"><tbody>' + filas.map((f) => '<tr><th>' + f[0] + '</th><td>' + esc(f[1]) + '</td></tr>').join("") + '</tbody></table></div>' +
+        '<div class="aparecer d1">' +
+          (e.descripcion ? '<div class="antetitulo">Descripción</div><div class="texto-largo">' + esc(e.descripcion) + '</div>' : "") +
+          (e.campana ? '<div class="antetitulo" style="margin-top:40px">Campaña</div><div class="texto-largo">' + esc(e.campana) + '</div>' : "") +
+          (e.observaciones ? '<div class="antetitulo" style="margin-top:40px">Observaciones</div><div class="texto-largo">' + esc(e.observaciones) + '</div>' : "") +
+        '</div>' +
+      '</div></div></section>' +
+
+      '<section class="seccion" style="padding-top:60px"><div class="contenedor">' +
+        '<div class="encabezado-seccion" style="margin-bottom:36px"><div><div class="antetitulo">Genealogía</div><h2 class="titulo-seccion">Árbol <em>genealógico</em></h2></div></div>' +
+        '<div class="pedigri-marco aparecer">' + arbol(e) + '</div>' +
+        '<p class="pedigri-nota">Machos en la línea superior de cada par; hembras en cursiva.</p>' +
+      '</div></section>' +
+
+      (e.info_padre || e.info_madre ?
+      '<section class="seccion blanca"><div class="contenedor"><div class="dos-col">' +
+        (ped.p || e.info_padre ? '<div class="tarjeta-progenitor aparecer"><small>El padre</small><h3>' + esc(ped.p || "—") + '</h3>' +
+          (ped.pp || ped.pm ? '<div class="linea-sangre">' + esc(ped.pp || "—") + ' — ' + esc(ped.pm || "—") + (ped.pmp ? ", por " + esc(ped.pmp) : "") + '</div>' : "") +
+          (e.info_padre ? '<p>' + esc(e.info_padre) + '</p>' : "") + '</div>' : "") +
+        (ped.m || e.info_madre ? '<div class="tarjeta-progenitor aparecer d1"><small>La madre</small><h3>' + esc(ped.m || "—") + '</h3>' +
+          (ped.mp || ped.mm ? '<div class="linea-sangre">' + esc(ped.mp || "—") + ' — ' + esc(ped.mm || "—") + (ped.mmp ? ", por " + esc(ped.mmp) : "") + '</div>' : "") +
+          (e.info_madre ? '<p>' + esc(e.info_madre) + '</p>' : "") + '</div>' : "") +
+      '</div></div></section>' : "") +
+
+      '<section class="seccion" id="consulta"><div class="contenedor" style="max-width:820px">' +
+        '<form class="formulario aparecer" id="form-consulta" novalidate>' +
+          '<div class="antetitulo">Consulta</div>' +
+          '<h3>Consultar por ' + esc(e.nombre) + '</h3>' +
+          '<p>Déjenos sus datos y le respondemos a la brevedad. También coordinamos visitas al Haras.</p>' +
+          '<div class="campos">' +
+            '<div class="campo"><label for="f-nombre">Nombre</label><input id="f-nombre" name="nombre" required autocomplete="name"></div>' +
+            '<div class="campo"><label for="f-tel">Teléfono</label><input id="f-tel" name="telefono" type="tel" autocomplete="tel"></div>' +
+            '<div class="campo completo"><label for="f-mail">Correo electrónico</label><input id="f-mail" name="email" type="email" autocomplete="email"></div>' +
+            '<div class="campo completo"><label for="f-msj">Mensaje</label><textarea id="f-msj" name="mensaje">Me interesa este ejemplar. ¿Podrían enviarme más información?</textarea></div>' +
+          '</div>' +
+          '<input name="web" class="oculto" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+          '<button class="boton ancho" type="submit">Enviar consulta</button>' +
+          '<div class="mensaje-ok" role="status"></div>' +
+        '</form>' +
+      '</div></section>';
+
+    /* Visor de fotos y video */
+    const visor = document.getElementById("visor");
+    let actual = 0;
+    function ir(i) {
+      if (!lista.length) { visor.innerHTML = '<img src="img/v-potrillos.jpg" alt="">'; return; }
+      actual = (i + lista.length) % lista.length;
+      pintarMedio(visor, lista[actual], e.nombre);
+      if (lista.length > 1) {
+        visor.insertAdjacentHTML("beforeend",
+          '<button class="visor-flecha izq" type="button" aria-label="Anterior">' + H.ICONOS.izq + '</button>' +
+          '<button class="visor-flecha der" type="button" aria-label="Siguiente">' + H.ICONOS.der + '</button>' +
+          '<span class="visor-contador">' + (actual + 1) + ' / ' + lista.length + '</span>');
+        visor.querySelector(".izq").onclick = () => ir(actual - 1);
+        visor.querySelector(".der").onclick = () => ir(actual + 1);
+      }
+      document.querySelectorAll("#miniaturas button").forEach((b) => b.classList.toggle("activa", Number(b.dataset.i) === actual));
+    }
+    document.querySelectorAll("#miniaturas button").forEach((b) => b.addEventListener("click", () => ir(Number(b.dataset.i))));
+    visor.addEventListener("click", (ev) => {
+      const img = ev.target.closest("img");
+      if (img) H.abrirModal('<img src="' + img.src + '" alt="' + esc(e.nombre) + '">');
+    });
+    let x0 = null;
+    visor.addEventListener("touchstart", (ev) => { x0 = ev.touches[0].clientX; }, { passive: true });
+    visor.addEventListener("touchend", (ev) => {
+      if (x0 === null) return;
+      const dx = ev.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) ir(actual + (dx < 0 ? 1 : -1));
+      x0 = null;
+    });
+    ir(0);
+
+    document.getElementById("compartir").addEventListener("click", async () => {
+      const datos = { title: e.nombre + " · Haras Santa María de Juncal", url: location.href };
+      if (navigator.share) { try { await navigator.share(datos); } catch (err) {} }
+      else { try { await navigator.clipboard.writeText(location.href); document.getElementById("compartir").lastChild.textContent = "Enlace copiado"; } catch (err) {} }
+    });
+
+    H.conectarFormulario(document.getElementById("form-consulta"), () => ({ ejemplar: e.nombre, enlace: location.href }));
+    H.animar();
+  }
+
+  H.cargarVentas().then(({ lista }) => {
+    const e = lista.find((x) => String(x.id) === String(id));
+    if (!e) {
+      main.innerHTML = '<section class="seccion" style="padding-top:200px"><div class="contenedor centro">' +
+        '<div class="antetitulo centrado">En venta</div><h1 class="titulo-seccion">Ejemplar no encontrado</h1>' +
+        '<p class="bajada" style="margin:20px auto 34px">Es posible que ya no esté publicado.</p>' +
+        '<a class="boton" href="venta.html">Ver ejemplares en venta</a></div></section>';
+      return;
+    }
+    render(e);
+  });
+})();
+</script>
+</body>
+</html>

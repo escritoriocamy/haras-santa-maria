@@ -1,0 +1,1978 @@
+{
+"padrillos": [
+{
+"nombre": "The Leopard",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "USA",
+"nac": 2005,
+"padre": "Storm Cat",
+"madre": "Moon Safari",
+"abuelo": "Mr Prospector"
+}
+],
+"yeguas": [
+{
+"nombre": "Alma Azul",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2018,
+"padre": "Adriano",
+"madre": "Manzana",
+"abuelo": "Bernstein"
+},
+{
+"nombre": "Astrid",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "Castle Rose",
+"abuelo": "Awesome Again"
+},
+{
+"nombre": "Leoparda Brava",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "Star Brava",
+"abuelo": "Wrangler"
+},
+{
+"nombre": "Lovely Dance",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "Lovely Devil",
+"abuelo": "Mutakddim"
+},
+{
+"nombre": "Menorca Fever",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2017,
+"padre": "Texas Fever",
+"madre": "Jewel Of France",
+"abuelo": "Cipayo"
+},
+{
+"nombre": "Estrelha Branca",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "BRA",
+"nac": 2016,
+"padre": "Pioneering",
+"madre": "Aurora Boreal",
+"abuelo": "Elusive Quality"
+},
+{
+"nombre": "Hebrea Linda",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2016,
+"padre": "Honour and Glory",
+"madre": "Lady Bett",
+"abuelo": "Exploit"
+},
+{
+"nombre": "Like Luna",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2016,
+"padre": "Sol Planet",
+"madre": "Lovely Rita",
+"abuelo": "Lizard Island"
+},
+{
+"nombre": "Vacation Camp",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2016,
+"padre": "Campanologist",
+"madre": "Vacation Emper",
+"abuelo": "Emperor Jones"
+},
+{
+"nombre": "Anachella",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2015,
+"padre": "Bluegrass Cat",
+"madre": "Marachella",
+"abuelo": "Gulpha Gorge"
+},
+{
+"nombre": "Feiticeira Kowboy",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "BRA",
+"nac": 2015,
+"padre": "Kodiak Kowboy",
+"madre": "Lima Nova",
+"abuelo": "Minstrel Glory"
+},
+{
+"nombre": "Roma Rye",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "ARG",
+"nac": 2015,
+"padre": "Catcher In The Rye",
+"madre": "Stormy Royalty",
+"abuelo": "Bernstein"
+},
+{
+"nombre": "Vai Que Dá",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "BRA",
+"nac": 2015,
+"padre": "Drosselmeyer",
+"madre": "Idolatrada Export",
+"abuelo": "Candy Stripes"
+},
+{
+"nombre": "Wild Vip",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "BRA",
+"nac": 2015,
+"padre": "Kodia Kowboydiamond’s Wild",
+"madre": "",
+"abuelo": "Forestry"
+},
+{
+"nombre": "Itrak",
+"sexo": "H",
+"pelaje": "Tordillo",
+"pais": "URU",
+"nac": 2014,
+"padre": "Meal Night",
+"madre": "Trace Track",
+"abuelo": "Fritz"
+},
+{
+"nombre": "Pure Emocionada",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "ARG",
+"nac": 2013,
+"padre": "Pure Prize",
+"madre": "Forty Emisaria",
+"abuelo": "Roar"
+},
+{
+"nombre": "Sub Mak",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2012,
+"padre": "Subordination",
+"madre": "Desert Glow",
+"abuelo": "Machiavellian"
+},
+{
+"nombre": "Fashion Appel",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "BRA",
+"nac": 2011,
+"padre": "Suc. Appeal",
+"madre": "Madi´s Jul",
+"abuelo": "Giant´s Causeway"
+},
+{
+"nombre": "Bergamot",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "ARG",
+"nac": 2010,
+"padre": "Mutakddim",
+"madre": "Bellow",
+"abuelo": "Roar"
+},
+{
+"nombre": "Star Brava",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2010,
+"padre": "Wangler",
+"madre": "Stardiff",
+"abuelo": "Luhuk"
+},
+{
+"nombre": "Alpargata",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "BRA",
+"nac": 2009,
+"padre": "Signal Tap",
+"madre": "Dainty Sway",
+"abuelo": "Dansili"
+},
+{
+"nombre": "La Vie Boheme",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "ARG",
+"nac": 2009,
+"padre": "Nutakddim",
+"madre": "Fairish",
+"abuelo": "Southern Halo"
+},
+{
+"nombre": "Isadora Catapora",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "BRA",
+"nac": 2008,
+"padre": "Know Heights",
+"madre": "Vip Girl",
+"abuelo": "Trempolino"
+},
+{
+"nombre": "Programmi",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2008,
+"padre": "Cagney",
+"madre": "Que mais",
+"abuelo": "Robin Des Pins"
+},
+{
+"nombre": "Twiga",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "ARG",
+"nac": 2008,
+"padre": "Southern Halo",
+"madre": "Tweedy",
+"abuelo": "Roy"
+},
+{
+"nombre": "Buying Power",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "USA",
+"nac": 2007,
+"padre": "Awesome Again",
+"madre": "Future´s Market",
+"abuelo": "Unbridled"
+},
+{
+"nombre": "Fantastica Chris",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "BRA",
+"nac": 2007,
+"padre": "Christine´s Outlaw",
+"madre": "Fantasias De Amor",
+"abuelo": "Roi Normand"
+},
+{
+"nombre": "Manzana",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "ARG",
+"nac": 2007,
+"padre": "Bernstein",
+"madre": "Mamma Allegra",
+"abuelo": "Ghadeer"
+},
+{
+"nombre": "Dahlia D’oro",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "USA",
+"nac": 2006,
+"padre": "Medaglia D’oro",
+"madre": "My Lady Avie",
+"abuelo": "With Approval"
+},
+{
+"nombre": "Summerville",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "BRA",
+"nac": 2006,
+"padre": "Pitu Da Guanabara",
+"madre": "Sunshine Miami",
+"abuelo": "Irish Fighter"
+},
+{
+"nombre": "Passing Note",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "ARG",
+"nac": 2003,
+"padre": "Luhuk",
+"madre": "Pass By",
+"abuelo": "Southern Halo"
+},
+{
+"nombre": "L’hiver",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "CHI",
+"nac": 2002,
+"padre": "Hussonet",
+"madre": "Wrist",
+"abuelo": "Worldwatch"
+},
+{
+"nombre": "Justflylow",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "BRA",
+"nac": 2001,
+"padre": "Royal Academy",
+"madre": "Tulippa Negra",
+"abuelo": "El Gran Senor"
+},
+{
+"nombre": "Stardiff",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "ARG",
+"nac": 2000,
+"padre": "Luhuk",
+"madre": "Tarasca",
+"abuelo": "Pulines"
+}
+],
+"produccion": [
+{
+"nombre": "Aquina",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "Bluete",
+"abuelo": "Dubai Dust"
+},
+{
+"nombre": "Azulgrana",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "Sub Mak",
+"abuelo": "Subordination"
+},
+{
+"nombre": "Bonita Demas",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "Itrak",
+"abuelo": "Meal Night"
+},
+{
+"nombre": "Bravo Star",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "Star Brava",
+"abuelo": "Wrangler"
+},
+{
+"nombre": "Carmelito Cat",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "Carmelita H",
+"abuelo": "Hardy"
+},
+{
+"nombre": "Elegante Roma",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2021,
+"padre": "Endorsement",
+"madre": "Roma Rye",
+"abuelo": "Catcher In The Rye"
+},
+{
+"nombre": "Gata Fugaz",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "Vai Que Da",
+"abuelo": "Drosselmeyer"
+},
+{
+"nombre": "Historico",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2021,
+"padre": "Hielo",
+"madre": "Araclarens",
+"abuelo": "Aracai"
+},
+{
+"nombre": "La Manzanita",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "Manzana",
+"abuelo": "Bernstein"
+},
+{
+"nombre": "Leopard Queen",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "Bergamot",
+"abuelo": "Mutakddim"
+},
+{
+"nombre": "Leoparda Cat",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "Logrera",
+"abuelo": "Lockout"
+},
+{
+"nombre": "Leoparda De Oro",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "Dahlia D'Oro",
+"abuelo": "Medaglia D'Oro"
+},
+{
+"nombre": "Leoparda Fashion",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "Fashion Appel",
+"abuelo": "Successful Appel"
+},
+{
+"nombre": "Marcial",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2021,
+"padre": "Muy Veloz",
+"madre": "Subdue",
+"abuelo": "Subordination"
+},
+{
+"nombre": "Programatica",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "Programmi",
+"abuelo": "Cagney"
+},
+{
+"nombre": "Que Carta",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2021,
+"padre": "Kodiak Kowboy",
+"madre": "Radio Continental",
+"abuelo": "Robin Des Pins"
+},
+{
+"nombre": "Quemafan",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "La Vie Boheme",
+"abuelo": "Mutakddim"
+},
+{
+"nombre": "The New Country",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "Isadora Catapora",
+"abuelo": "Know Heights"
+},
+{
+"nombre": "Tim Class",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "Buying Power",
+"abuelo": "Awesome Again"
+},
+{
+"nombre": "Westminster",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2021,
+"padre": "The Leopard",
+"madre": "Lavinium",
+"abuelo": "Interprete"
+},
+{
+"nombre": "Barrilete Cosmico",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2020,
+"padre": "The Leopard",
+"madre": "Stardiff",
+"abuelo": "Luhuk"
+},
+{
+"nombre": "Cat In Town",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2020,
+"padre": "The Leopard",
+"madre": "Isadora Catapora",
+"abuelo": "Know Heights"
+},
+{
+"nombre": "Clausen",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2020,
+"padre": "Overanalyze",
+"madre": "Vai que da",
+"abuelo": "Drosselmeyer"
+},
+{
+"nombre": "Fantastica Men",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2020,
+"padre": "Overanalyze",
+"madre": "Fantastica Chris",
+"abuelo": "Christine's Outlaw"
+},
+{
+"nombre": "Fashion Girl",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2020,
+"padre": "Overanalyze",
+"madre": "Fashion Appel",
+"abuelo": "Successful Appeal"
+},
+{
+"nombre": "Frida",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2020,
+"padre": "The Leopard",
+"madre": "La Vie Boheme",
+"abuelo": "Mutakddim"
+},
+{
+"nombre": "Gata de Verano",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2020,
+"padre": "The Leopard",
+"madre": "Sumerville",
+"abuelo": "Pitu Da Guanabara"
+},
+{
+"nombre": "Husson Cat",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2020,
+"padre": "The Leopard",
+"madre": "L'Hiver",
+"abuelo": "Hussonet"
+},
+{
+"nombre": "Leopard Star",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2020,
+"padre": "The Leopard",
+"madre": "Star Brava",
+"abuelo": "Wrangler"
+},
+{
+"nombre": "Leopardo Ilustre",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2020,
+"padre": "The Leopard",
+"madre": "Two People",
+"abuelo": "Pleasant Variety"
+},
+{
+"nombre": "Leopardo Lindo",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2020,
+"padre": "The Leopard",
+"madre": "Radio Continental",
+"abuelo": "Robin Des Pins"
+},
+{
+"nombre": "Little Roy",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2020,
+"padre": "A Little Warm",
+"madre": "Carmelita H",
+"abuelo": "Hardy"
+},
+{
+"nombre": "Mas que bonita",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2020,
+"padre": "The Leopard",
+"madre": "Bubbly Forever",
+"abuelo": "Yagli"
+},
+{
+"nombre": "Mogamak",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2020,
+"padre": "Mogador",
+"madre": "Sub Mak",
+"abuelo": "Subordination"
+},
+{
+"nombre": "Negador",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2020,
+"padre": "Mogador",
+"madre": "Adalia",
+"abuelo": "Seeker's Reward"
+},
+{
+"nombre": "Pampera",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2020,
+"padre": "The Leopard",
+"madre": "Justiflylow",
+"abuelo": "Royal Academy"
+},
+{
+"nombre": "Primera Sorpresa",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2020,
+"padre": "Blood Money",
+"madre": "Buying Power",
+"abuelo": "Awesome Again"
+},
+{
+"nombre": "Tracktornado",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2020,
+"padre": "The Leopard",
+"madre": "Haze Track",
+"abuelo": "Smarty Jones"
+},
+{
+"nombre": "Abuelo Guille",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2019,
+"padre": "Hat Trick",
+"madre": "Bubbly Forever",
+"abuelo": "Yagli"
+},
+{
+"nombre": "Bello Leopard",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2019,
+"padre": "The Leopard",
+"madre": "Bella Minna",
+"abuelo": "Smarty Jones"
+},
+{
+"nombre": "Bohemia Vip",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2019,
+"padre": "Smarty Jones",
+"madre": "La Vie Boheme",
+"abuelo": "Mutakddim"
+},
+{
+"nombre": "Brava Star",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2019,
+"padre": "The Leopard",
+"madre": "Star Brava",
+"abuelo": "Wrangler"
+},
+{
+"nombre": "Cat Lolita",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2019,
+"padre": "The Leopard",
+"madre": "Lola",
+"abuelo": "Interprete"
+},
+{
+"nombre": "Dalacia",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2019,
+"padre": "Meal Night",
+"madre": "Haze Track",
+"abuelo": "Smarty Jones"
+},
+{
+"nombre": "Dura de Matar",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2019,
+"padre": "The Leopard",
+"madre": "JustiFlylow",
+"abuelo": "Royal Academy"
+},
+{
+"nombre": "El Horizonte",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2019,
+"padre": "The Leopard",
+"madre": "Tnt Girl",
+"abuelo": "Wild Event"
+},
+{
+"nombre": "Gata Parda",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2019,
+"padre": "The Leopard",
+"madre": "Alpargata",
+"abuelo": "Signal Tap"
+},
+{
+"nombre": "La Comparsera",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2019,
+"padre": "The Leopard",
+"madre": "Passing Note",
+"abuelo": "Luhuk"
+},
+{
+"nombre": "La Resiliente",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2019,
+"padre": "Southern Lawyer",
+"madre": "Bergamot",
+"abuelo": "Mutakddim"
+},
+{
+"nombre": "Leopardo de Oro",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2019,
+"padre": "The Leopard",
+"madre": "Dahlia D'Oro",
+"abuelo": "Medaglia D'Oro"
+},
+{
+"nombre": "Linda Sorpresa",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2019,
+"padre": "The Leopard",
+"madre": "Radio Continental",
+"abuelo": "Robin Des Pins"
+},
+{
+"nombre": "Perla Bela",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2019,
+"padre": "City Banker",
+"madre": "Bluete",
+"abuelo": "Dubai Dust"
+},
+{
+"nombre": "Programatico",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2019,
+"padre": "The Leopard",
+"madre": "Programmi",
+"abuelo": "Cagney"
+},
+{
+"nombre": "Royal Quiet",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2019,
+"padre": "Smarty Jones",
+"madre": "Be Quiet",
+"abuelo": "Real Quiet"
+},
+{
+"nombre": "Santos Dumont",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2019,
+"padre": "The Leopard",
+"madre": "Eurasia",
+"abuelo": "Good Report"
+},
+{
+"nombre": "The New Queen",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2019,
+"padre": "The Leopard",
+"madre": "Isadora Catapora",
+"abuelo": "Know Heights"
+},
+{
+"nombre": "Vacante",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2019,
+"padre": "The Leopard",
+"madre": "L'Hiver",
+"abuelo": "Hussonet"
+},
+{
+"nombre": "Black Neguinha",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2018,
+"padre": "Kodiak Kowboy",
+"madre": "Neguinha Do Fuba",
+"abuelo": "Watchmon"
+},
+{
+"nombre": "Buen Vecino",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2018,
+"padre": "Trinniberg",
+"madre": "Star Brava",
+"abuelo": "Wrangler"
+},
+{
+"nombre": "Divina Gata",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2018,
+"padre": "The Leopard",
+"madre": "Tnt Girl",
+"abuelo": "Wild Event"
+},
+{
+"nombre": "El Cambista",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2018,
+"padre": "The Leopard",
+"madre": "Programmi",
+"abuelo": "Cagney"
+},
+{
+"nombre": "El Comparsero",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2018,
+"padre": "The Leopard",
+"madre": "Passing Note",
+"abuelo": "Luhuk"
+},
+{
+"nombre": "Gata Carmela",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2018,
+"padre": "The Leopard",
+"madre": "Carmelita H",
+"abuelo": "Hardy"
+},
+{
+"nombre": "Hasty Flower",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2018,
+"padre": "Adriano",
+"madre": "Alpargata",
+"abuelo": "Signal Tap"
+},
+{
+"nombre": "La Romasita",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2018,
+"padre": "Sothern Lawyer",
+"madre": "Tulipa Azul",
+"abuelo": "Ivan Denisovich"
+},
+{
+"nombre": "Leopardo Fuerte",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2018,
+"padre": "The Leopard",
+"madre": "Ultima Normanda",
+"abuelo": "Roi Normand"
+},
+{
+"nombre": "Linda Dama",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2018,
+"padre": "The Leopard",
+"madre": "Radio Continental",
+"abuelo": "Robin Des Pins"
+},
+{
+"nombre": "Marcelito Viejo",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2018,
+"padre": "The Leopard",
+"madre": "Stardiff",
+"abuelo": "Luhuk"
+},
+{
+"nombre": "No Me Olvides",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2018,
+"padre": "The Leopard",
+"madre": "Aamori",
+"abuelo": "Gulpha George"
+},
+{
+"nombre": "Prince Leopard",
+"sexo": "M",
+"pelaje": "Tordillo",
+"pais": "URU",
+"nac": 2018,
+"padre": "The Leopard",
+"madre": "Cheers",
+"abuelo": "Maria's Mon"
+},
+{
+"nombre": "The Best Holiday",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2018,
+"padre": "The Leopard",
+"madre": "Every Holiday",
+"abuelo": "Halo Sunshine"
+},
+{
+"nombre": "Abuela Nelsa",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "Warsaw",
+"abuelo": "Emmson"
+},
+{
+"nombre": "Astrid",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "Castle Rose",
+"abuelo": "Awesome Again"
+},
+{
+"nombre": "Candy Lola",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2017,
+"padre": "Sydney's Candy",
+"madre": "Lola",
+"abuelo": "Interprete"
+},
+{
+"nombre": "Dulce Leoparda",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "Dulce Artic",
+"abuelo": "Ghadeer"
+},
+{
+"nombre": "Gato Malevo",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "Gata Colorada",
+"abuelo": "Inexplicable"
+},
+{
+"nombre": "Isadora Great",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2017,
+"padre": "Great Shadow",
+"madre": "Isadora Catapora",
+"abuelo": "Know Heights"
+},
+{
+"nombre": "Justice Cat",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "Justflylow",
+"abuelo": "Royal Academy"
+},
+{
+"nombre": "Leoparda Brava",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "Star Brava",
+"abuelo": "Wrangler"
+},
+{
+"nombre": "Leopardo Bravo",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "Passing Note",
+"abuelo": "Luhuk"
+},
+{
+"nombre": "Leopardo Malevo",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "Hunny",
+"abuelo": "Wild Event"
+},
+{
+"nombre": "Leopardo Salvaje",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "Programmi",
+"abuelo": "Cagney"
+},
+{
+"nombre": "Linda Demas",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2017,
+"padre": "Subordination",
+"madre": "Radio Continental",
+"abuelo": "Robin Des Pins"
+},
+{
+"nombre": "Lovely Dance",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "Lovely Devil",
+"abuelo": "Mutakddim"
+},
+{
+"nombre": "Malmandada",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2017,
+"padre": "Mogador",
+"madre": "Lorda",
+"abuelo": "Gulpha George"
+},
+{
+"nombre": "Super Cheetah",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "Bella Cristal",
+"abuelo": "Plicck"
+},
+{
+"nombre": "Tiger Of Fire",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "L'Hiver",
+"abuelo": "Hussonet"
+},
+{
+"nombre": "Tutelado",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2017,
+"padre": "The Leopard",
+"madre": "Tutelada",
+"abuelo": "Roi Normand"
+},
+{
+"nombre": "Ammi Runner",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "Programmi",
+"abuelo": "Cagney"
+},
+{
+"nombre": "Blue Runner",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "Song Song Blue",
+"abuelo": "Russian Blue"
+},
+{
+"nombre": "Boca Brava",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "Baronesa Do Vale",
+"abuelo": "Public Purse"
+},
+{
+"nombre": "Boca Loca",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "Bocanegra",
+"abuelo": "Subordination"
+},
+{
+"nombre": "Boy Red",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "Tnt Girl",
+"abuelo": "Wild Event"
+},
+{
+"nombre": "Brava Red",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "Star Brava",
+"abuelo": "Wrangler"
+},
+{
+"nombre": "Emocionado",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "For Emotion",
+"abuelo": "Choctaw Ridge"
+},
+{
+"nombre": "Galante Runner",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "Verte Galante",
+"abuelo": "Know Heights"
+},
+{
+"nombre": "Gipsy Red",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "Gipsy Queen",
+"abuelo": "Mogador"
+},
+{
+"nombre": "Malamada",
+"sexo": "H",
+"pelaje": "Tordilla",
+"pais": "URU",
+"nac": 2016,
+"padre": "Mogador",
+"madre": "Lorda",
+"abuelo": "Gulpha George"
+},
+{
+"nombre": "Novela Red",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "Novela",
+"abuelo": "Midnight Tiger"
+},
+{
+"nombre": "Red Aloi",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "Dulce Artic",
+"abuelo": "Ghadeer"
+},
+{
+"nombre": "Red Best",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "Ultima Normanda",
+"abuelo": "Roi Normand"
+},
+{
+"nombre": "Red Cat",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "Gata Colorada",
+"abuelo": "Inexplicable"
+},
+{
+"nombre": "Red Point",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "Boiling Point",
+"abuelo": "Put It Back"
+},
+{
+"nombre": "Red Royal",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "Be Quiet",
+"abuelo": "Real Quiet"
+},
+{
+"nombre": "Silver Red",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2016,
+"padre": "Red Runner",
+"madre": "Silvermine",
+"abuelo": "Signal Tap"
+},
+{
+"nombre": "Back Point",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2015,
+"padre": "Amigoni",
+"madre": "Boiling Point",
+"abuelo": "Put It Back"
+},
+{
+"nombre": "Gata Seductora",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2015,
+"padre": "Red Runner",
+"madre": "Gata Colorada",
+"abuelo": "Inexplicable"
+},
+{
+"nombre": "Gilk Loren",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2015,
+"padre": "Maestro Lorenzo",
+"madre": "Gily Hicks",
+"abuelo": "Redattore"
+},
+{
+"nombre": "Insopor",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2015,
+"padre": "Red Runner",
+"madre": "Intisab",
+"abuelo": "Blue Stag"
+},
+{
+"nombre": "Red Bonita",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2015,
+"padre": "Red Runner",
+"madre": "Programmi",
+"abuelo": "Cagney"
+},
+{
+"nombre": "Red Conor",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2015,
+"padre": "Red Runner",
+"madre": "Tanabata",
+"abuelo": "Top-Ten"
+},
+{
+"nombre": "Red Euge",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2015,
+"padre": "Red Runner",
+"madre": "Dulce Artic",
+"abuelo": "Ghadeer"
+},
+{
+"nombre": "Red Novel",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2015,
+"padre": "Red Runner",
+"madre": "Novela",
+"abuelo": "Midnight Tiger"
+},
+{
+"nombre": "Red Queen",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2015,
+"padre": "Red Runner",
+"madre": "Gipsy Queen",
+"abuelo": "Mogador"
+},
+{
+"nombre": "Silver Glory",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2015,
+"padre": "Honour And Glory",
+"madre": "Silvermine",
+"abuelo": "Signal Tap"
+},
+{
+"nombre": "Tomi Jerry",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2015,
+"padre": "Red Runner",
+"madre": "Bella Cristal",
+"abuelo": "Plicck"
+},
+{
+"nombre": "Emocion De Mas",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2014,
+"padre": "Pretty Normand",
+"madre": "For Emotion",
+"abuelo": "Choctaw Ridge"
+},
+{
+"nombre": "Fund Rap",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2014,
+"padre": "Fund of Funds",
+"madre": "Lady Rap",
+"abuelo": "Music Prospector"
+},
+{
+"nombre": "Galante Demas",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2014,
+"padre": "Mogador",
+"madre": "Verte Galante",
+"abuelo": "Know Heights"
+},
+{
+"nombre": "Men Adorado",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2014,
+"padre": "Pretty Normand",
+"madre": "Adorada Man",
+"abuelo": "Dancer Man"
+},
+{
+"nombre": "Novelista",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2014,
+"padre": "Mogador",
+"madre": "Novela",
+"abuelo": "Midnight Tiger"
+},
+{
+"nombre": "Starfish",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2014,
+"padre": "Mogador",
+"madre": "Stardiff",
+"abuelo": "Luhuk"
+},
+{
+"nombre": "Tower Song",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2014,
+"padre": "Sing-A-Song",
+"madre": "Tower",
+"abuelo": "Crimson Tide"
+},
+{
+"nombre": "Adorado Men",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2013,
+"padre": "Pretty Normand",
+"madre": "Adorada Man",
+"abuelo": "Dancer Man"
+},
+{
+"nombre": "Asi De Bella",
+"sexo": "H",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2013,
+"padre": "Asidero",
+"madre": "Bella Cristal",
+"abuelo": "Plicck"
+},
+{
+"nombre": "Baronesa Blanca",
+"sexo": "H",
+"pelaje": "Tordillo",
+"pais": "URU",
+"nac": 2013,
+"padre": "Watchmon",
+"madre": "Baronesa Do Vale",
+"abuelo": "Public Purse"
+},
+{
+"nombre": "Maximus",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2013,
+"padre": "Drosselmeyer",
+"madre": "Dulce Artic",
+"abuelo": "Ghadeer"
+},
+{
+"nombre": "Milagros Elena",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2013,
+"padre": "Nedawi",
+"madre": "Tnt Girl",
+"abuelo": "Wild Event"
+},
+{
+"nombre": "Pretty Bella",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2013,
+"padre": "Pretty Normand",
+"madre": "Volpex",
+"abuelo": "Signal Tap"
+},
+{
+"nombre": "Pretty Colo",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2013,
+"padre": "Pretty Normand",
+"madre": "Gata Colorada",
+"abuelo": "Inexplicable"
+},
+{
+"nombre": "Pretty Program",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2013,
+"padre": "Pretty Normand",
+"madre": "Programmi",
+"abuelo": "Cagney"
+},
+{
+"nombre": "Pretty Valentina",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2013,
+"padre": "Pretty Normand",
+"madre": "Silvermine",
+"abuelo": "Signal Tap"
+},
+{
+"nombre": "Smart Boy",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2013,
+"padre": "Smarty Jones",
+"madre": "La Boca Raton",
+"abuelo": "Exile King"
+},
+{
+"nombre": "Strategic Record",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2013,
+"padre": "Strategic Prince",
+"madre": "Video-Record",
+"abuelo": "Tsunami Slew"
+},
+{
+"nombre": "Verte Dorado",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2013,
+"padre": "Pretty Normand",
+"madre": "Verte Galante",
+"abuelo": "Know Heights"
+},
+{
+"nombre": "Azulgrana",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2012,
+"padre": "Pretty Normand",
+"madre": "Novela",
+"abuelo": "Midnight Tiger"
+},
+{
+"nombre": "Furia Galante",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2012,
+"padre": "Fahim",
+"madre": "Verte Galante",
+"abuelo": "Know Heights"
+},
+{
+"nombre": "Pretty Damiana",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2012,
+"padre": "Pretty Normand",
+"madre": "Silvermine",
+"abuelo": "Signal Tap"
+},
+{
+"nombre": "Pretty Gerva",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2012,
+"padre": "Pretty Normand",
+"madre": "Papita Dulce",
+"abuelo": "Junior Lark"
+},
+{
+"nombre": "Pretty Josefa",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2012,
+"padre": "Pretty Normand",
+"madre": "Volpex",
+"abuelo": "Signal Tap"
+},
+{
+"nombre": "Pretty Rubia",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2012,
+"padre": "Pretty Normand",
+"madre": "Stardiff",
+"abuelo": "Luhuk"
+},
+{
+"nombre": "Pretty Santa",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2012,
+"padre": "Pretty Normand",
+"madre": "Video-Record",
+"abuelo": "Tsunami Slew"
+},
+{
+"nombre": "Programado",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2012,
+"padre": "Southern Lawyer",
+"madre": "Programmi",
+"abuelo": "Cagney"
+},
+{
+"nombre": "Señor Frogs",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2012,
+"padre": "Ecclesiastic",
+"madre": "Girl Ritz",
+"abuelo": "Ritz"
+},
+{
+"nombre": "Sonho Da Ponta",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2012,
+"padre": "Mister Manx",
+"madre": "Ponta a Ponta",
+"abuelo": "Mensageiro Alado"
+},
+{
+"nombre": "Pretty Clary",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2011,
+"padre": "Pretty Normand",
+"madre": "Stardiff",
+"abuelo": "Luhuk"
+},
+{
+"nombre": "Pretty Fria",
+"sexo": "H",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2011,
+"padre": "Pretty Normand",
+"madre": "Frente Fria",
+"abuelo": "Midnight Tiger"
+},
+{
+"nombre": "Pretty Galante",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2011,
+"padre": "Pretty Normand",
+"madre": "Verte Galante",
+"abuelo": "Know Heights"
+},
+{
+"nombre": "Pretty Santo",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2011,
+"padre": "Pretty Normand",
+"madre": "Novela",
+"abuelo": "Midnight Tiger"
+},
+{
+"nombre": "Video Mur",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2011,
+"padre": "Murashah",
+"madre": "Video-Record",
+"abuelo": "Tsunami Slew"
+},
+{
+"nombre": "Arms Honni",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2010,
+"padre": "Honni Soit",
+"madre": "Arms Of Cotton",
+"abuelo": "Crimson Tide"
+},
+{
+"nombre": "La July",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2010,
+"padre": "Notable Guest",
+"madre": "Verte Galante",
+"abuelo": "Know Heights"
+},
+{
+"nombre": "Pretty Elue",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2010,
+"padre": "Pretty Normand",
+"madre": "Ozanne",
+"abuelo": "Dodge"
+},
+{
+"nombre": "Pretty Green",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2010,
+"padre": "Pretty Normand",
+"madre": "Green Zel",
+"abuelo": "Choctaw Ridge"
+},
+{
+"nombre": "Pretty Sweet",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2010,
+"padre": "Pretty Normand",
+"madre": "Papita Dulce",
+"abuelo": "Junior Lark"
+},
+{
+"nombre": "Araclarens",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2009,
+"padre": "Aracai",
+"madre": "Clarens",
+"abuelo": "Ringaro"
+},
+{
+"nombre": "Caricos",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2009,
+"padre": "Vacher",
+"madre": "Ozanne",
+"abuelo": "Dodge"
+},
+{
+"nombre": "Claribel",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2009,
+"padre": "Choctaw Ridge",
+"madre": "Video-Record",
+"abuelo": "Tsunami Slew"
+},
+{
+"nombre": "Mister Nochero",
+"sexo": "M",
+"pelaje": "Zaino",
+"pais": "URU",
+"nac": 2009,
+"padre": "Mister Manx",
+"madre": "Buenas Noches",
+"abuelo": "Beethoven"
+},
+{
+"nombre": "Ravesinha",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2009,
+"padre": "Torrential",
+"madre": "Ravet",
+"abuelo": "Ghadeer"
+},
+{
+"nombre": "Tarin Guest",
+"sexo": "H",
+"pelaje": "Zaina",
+"pais": "URU",
+"nac": 2009,
+"padre": "Notable Guest",
+"madre": "Top Tarin",
+"abuelo": "Choctaw Ridge"
+},
+{
+"nombre": "Valegal",
+"sexo": "M",
+"pelaje": "Alazan",
+"pais": "URU",
+"nac": 2009,
+"padre": "Vacher",
+"madre": "Legalite",
+"abuelo": "De Quest"
+}
+]
+}

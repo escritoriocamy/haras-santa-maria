@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ejemplares en venta · Haras Santa María de Juncal</title>
+<meta name="description" content="Ejemplares sangre pura de carrera en venta particular, criados en el Haras Santa María de Juncal, San José, Uruguay. Fichas con fotos, video y genealogía.">
+<meta name="theme-color" content="#13202c">
+<meta property="og:title" content="Ejemplares en venta · Haras Santa María de Juncal">
+<meta property="og:image" content="img/portera.jpg">
+<link rel="icon" type="image/png" href="img/marca-azul.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<section class="banner">
+  <img src="img/portera.jpg" alt="" style="object-position:40% 50%">
+  <div class="contenedor">
+    <div class="antetitulo">Venta particular</div>
+    <h1>Ejemplares <em>en venta</em></h1>
+    <p>Además de nuestro remate anual, ofrecemos ejemplares seleccionados de nuestra producción, con su ficha completa a la vista.</p>
+  </div>
+</section>
+
+<section class="seccion" style="padding-top:70px">
+  <div class="contenedor">
+    <div class="filtros" id="filtros">
+      <div class="chips" role="group" aria-label="Filtrar por sexo">
+        <button class="chip activo" data-filtro="todos">Todos</button>
+        <button class="chip" data-filtro="M">Machos</button>
+        <button class="chip" data-filtro="H">Hembras</button>
+        <button class="chip" data-filtro="vendidos">Vendidos</button>
+      </div>
+      <span class="contador" id="contador"></span>
+    </div>
+    <div id="lista"><p class="cargando">Cargando ejemplares…</p></div>
+  </div>
+</section>
+
+<section class="seccion blanca">
+  <div class="contenedor angosto centro">
+    <div class="antetitulo centrado">Cómo comprar</div>
+    <h2 class="titulo-seccion">Un trato <em>directo</em> con el Haras</h2>
+    <div class="ornamento"><span data-icono="rombo"></span></div>
+    <p class="bajada">Consulte por WhatsApp o desde la ficha de cada ejemplar. Coordinamos visitas al Haras para conocerlo en persona y le enviamos toda la documentación y los videos que necesite.</p>
+    <p style="margin-top:34px"><a class="boton whatsapp" href="#" data-wa="Hola, quisiera consultar por los ejemplares en venta.">Consultar por WhatsApp</a></p>
+  </div>
+</section>
+
+<script src="js/config.js"></script>
+<script src="js/comun.js"></script>
+<script>
+(function () {
+  const H = window.Haras;
+  H.encabezado("venta", true);
+  H.pie();
+  document.querySelectorAll("[data-icono]").forEach((el) => { el.innerHTML = H.ICONOS[el.dataset.icono] || ""; });
+  document.querySelectorAll("[data-wa]").forEach((a) => { a.href = H.waLink(a.dataset.wa); a.target = "_blank"; a.rel = "noopener"; });
+
+  const cont = document.getElementById("lista");
+  const contador = document.getElementById("contador");
+  let todos = [];
+  let filtro = "todos";
+
+  function pintar() {
+    let lista = todos.filter((e) => filtro === "vendidos" ? H.estadoClase(e) === "vendido" : H.estadoClase(e) !== "vendido");
+    if (filtro === "M") lista = lista.filter((e) => !H.esHembra(e));
+    if (filtro === "H") lista = lista.filter((e) => H.esHembra(e));
+    lista.sort((a, b) => (String(b.destacado) === "true") - (String(a.destacado) === "true"));
+
+    if (!todos.some((e) => H.estadoClase(e) !== "vendido") && filtro !== "vendidos") {
+      cont.innerHTML = H.bloqueProximamente();
+      contador.textContent = "";
+      document.getElementById("filtros").classList.toggle("oculto", !todos.length);
+    } else if (!lista.length) {
+      cont.innerHTML = '<p class="cargando">No hay ejemplares en esta categoría por el momento.</p>';
+      contador.textContent = "";
+    } else {
+      cont.innerHTML = '<div class="grilla-venta">' + lista.map(H.tarjetaVenta).join("") + '</div>';
+      contador.textContent = lista.length + (lista.length === 1 ? " ejemplar" : " ejemplares");
+    }
+    H.animar(cont);
+  }
+
+  document.querySelectorAll("[data-filtro]").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll("[data-filtro]").forEach((x) => x.classList.toggle("activo", x === b));
+    filtro = b.dataset.filtro;
+    pintar();
+  }));
+
+  H.cargarVentas().then(({ lista }) => {
+    todos = lista;
+    if (!lista.some((e) => H.estadoClase(e) === "vendido")) document.querySelector('[data-filtro="vendidos"]').classList.add("oculto");
+    pintar();
+  });
+  H.animar();
+})();
+</script>
+</body>
+</html>
