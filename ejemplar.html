@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ejemplar en venta · Haras Santa María de Juncal</title>
 <meta name="description" content="Ficha de ejemplar en venta: fotos, video, genealogía e información del padre y la madre. Haras Santa María de Juncal, San José, Uruguay.">
-<meta name="theme-color" content="#13202c">
+<meta name="theme-color" content="#f4f1ea">
 <link rel="icon" type="image/png" href="img/marca-azul.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-<main id="ficha"><p class="cargando" style="padding-top:200px">Cargando ficha…</p></main>
+<main id="ficha"><div class="contenedor"><p class="cargando">Cargando ficha…</p></div></main>
 
 <script src="js/config.js"></script>
 <script src="js/comun.js"></script>
@@ -22,7 +22,7 @@
 (function () {
   const H = window.Haras;
   const esc = H.esc;
-  H.encabezado("venta", false);
+  H.encabezado("venta");
   H.pie();
 
   const id = new URLSearchParams(location.search).get("id");
@@ -42,12 +42,11 @@
 
   function arbol(e) {
     const p = e.ped || {};
-    let html = '<div class="pedigri"><div class="ped raiz"><small>Ejemplar</small><strong>' + esc(e.nombre) + '</strong></div>';
+    let html = '<div class="pedigri">';
     Object.keys(POS).forEach((k) => {
-      const gen = k.length;
       const macho = k.slice(-1) === "p";
       const nombre = String(p[k] || "").trim();
-      html += '<div class="ped g' + gen + " " + (macho ? "macho" : "hembra") + (nombre ? "" : " vacio") + '" style="grid-row:' + POS[k][1] + '">' +
+      html += '<div data-k="' + k + '" class="ped g' + k.length + " " + (macho ? "macho" : "hembra") + (nombre ? "" : " vacio") + '" style="grid-row:' + POS[k][1] + '">' +
         '<small>' + ETIQUETAS[k] + '</small><strong>' + (nombre ? esc(nombre) : "—") + '</strong></div>';
     });
     return html + '</div>';
@@ -78,25 +77,16 @@
     const anio = H.anioNac(e);
     const precio = H.precioTexto(e);
     const lista = medios(e);
-    const sub = [H.sexoTexto(e.sexo), e.pelaje, anio ? anio + (H.edadTexto(e) ? " (" + H.edadTexto(e) + ")" : "") : ""].filter(Boolean).map(esc).join(" · ");
+    const nac = e.nacimiento && /\d{4}-\d{2}-\d{2}/.test(e.nacimiento) ? (H.esHembra(e) ? "nacida el " : "nacido el ") + H.fechaLarga(e.nacimiento) : anio ? (H.esHembra(e) ? "nacida en " : "nacido en ") + anio : "";
+    const sub = [H.sexoTexto(e.sexo), (e.pelaje || "").toLowerCase(), nac].filter(Boolean).map(esc).join(", ");
     const hijo = H.esHembra(e) ? "Hija" : "Hijo";
     const msj = "Hola, me interesa el ejemplar " + e.nombre + " publicado en la web del Haras. " + location.href;
-
-    const filas = [
-      ["Sexo", H.sexoTexto(e.sexo)],
-      ["Pelaje", e.pelaje],
-      ["Nacimiento", e.nacimiento ? H.fechaLarga(e.nacimiento) : ""],
-      ["País", e.pais],
-      ["Criador", "Haras Santa María de Juncal"],
-      ["Ubicación", e.ubicacion],
-      ["Padre", ped.p],
-      ["Madre", ped.m],
-      ["Abuelo materno", ped.mp]
-    ].filter((f) => f[1]);
+    const fila = (k, v) => v ? '<li><span class="k">' + k + '</span><span class="puntos"></span><span class="v">' + esc(v) + '</span></li>' : "";
+    const estadoTxt = clase === "vendido" ? "Vendido" : clase === "reservado" ? "Reservado" : "Disponible";
 
     main.innerHTML =
       '<section class="ficha-top"><div class="contenedor">' +
-        '<nav class="migas"><a href="index.html">Inicio</a><span>/</span><a href="venta.html">En venta</a><span>/</span><span>' + esc(e.nombre) + '</span></nav>' +
+        '<nav class="migas"><a href="index.html">Inicio</a><span>·</span><a href="venta.html">En venta</a><span>·</span><span>' + esc(e.nombre) + '</span></nav>' +
         '<div class="ficha-grid">' +
           '<div>' +
             '<div class="visor" id="visor"></div>' +
@@ -105,50 +95,55 @@
                 '<img src="' + esc(m.tipo === "foto" ? H.foto(m.src, 300) : H.foto((e.fotos || [])[0] || "img/v-potrillos.jpg", 300)) + '" alt="" loading="lazy"></button>').join("") + '</div>' : "") +
           '</div>' +
           '<aside class="ficha-info">' +
-            '<span class="estado-pill ' + clase + '">' + (clase === "vendido" ? "Vendido" : clase === "reservado" ? "Reservado" : "Disponible") + '</span>' +
-            (e.ejemplo ? ' <span class="estado-pill" style="background:var(--tinta);color:#fff">Ficha de ejemplo</span>' : "") +
-            '<h1>' + esc(e.nombre) + '</h1>' +
-            '<div class="ficha-sub">' + sub + '</div>' +
-            (ped.p || ped.m ? '<p class="ficha-sangre">' + hijo + ' de <b>' + esc(ped.p || "—") + '</b> y <b>' + esc(ped.m || "—") + '</b>' + (ped.mp ? ', por ' + esc(ped.mp) : "") + '.</p>' : "") +
-            '<div class="ficha-precio"><small>' + (clase === "vendido" ? "Estado" : "Precio") + '</small><strong>' + (clase === "vendido" ? "Vendido" : precio || "A consultar") + '</strong></div>' +
+            '<span class="estado ' + clase + '">' + estadoTxt + (e.ejemplo ? ' <span class="ej">· ficha de ejemplo</span>' : "") + '</span>' +
+            '<h1 class="nombre">' + esc(e.nombre) + '</h1>' +
+            '<div class="ficha-sub">' + sub + '.</div>' +
+            (ped.p || ped.m ? '<p class="ficha-sangre">' + hijo + ' de <b>' + esc(ped.p || "—") + '</b> y ' + esc(ped.m || "—") + (ped.mp ? ', por ' + esc(ped.mp) : "") + '.</p>' : "") +
+            '<div class="ficha-precio"><small>Precio</small><strong>' + (clase === "vendido" ? "Vendido" : precio || "A consultar") + '</strong></div>' +
             '<div class="ficha-acciones">' +
-              (clase !== "vendido" ? '<a class="boton whatsapp ancho" target="_blank" rel="noopener" href="' + H.waLink(msj) + '">' + H.ICONOS.whatsapp + 'Consultar por WhatsApp</a>' : "") +
-              '<a class="boton claro ancho" href="#consulta">Enviar consulta</a>' +
+              (clase !== "vendido" ? '<a class="boton ancho" target="_blank" rel="noopener" href="' + H.waLink(msj) + '">Consultar por WhatsApp</a>' : "") +
+              '<a class="enlace" href="#consulta">Dejar una consulta</a>' +
+              '<button class="compartir" type="button" id="compartir">' + H.ICONOS.compartir + 'Compartir esta ficha</button>' +
             '</div>' +
-            '<button class="compartir" type="button" id="compartir">' + H.ICONOS.compartir + 'Compartir esta ficha</button>' +
           '</aside>' +
         '</div>' +
       '</div></section>' +
 
-      '<section class="seccion" style="padding-bottom:60px"><div class="contenedor"><div class="dos-col">' +
-        '<div class="aparecer"><div class="antetitulo">Ficha técnica</div>' +
-          '<table class="tabla-ficha"><tbody>' + filas.map((f) => '<tr><th>' + f[0] + '</th><td>' + esc(f[1]) + '</td></tr>').join("") + '</tbody></table></div>' +
-        '<div class="aparecer d1">' +
-          (e.descripcion ? '<div class="antetitulo">Descripción</div><div class="texto-largo">' + esc(e.descripcion) + '</div>' : "") +
-          (e.campana ? '<div class="antetitulo" style="margin-top:40px">Campaña</div><div class="texto-largo">' + esc(e.campana) + '</div>' : "") +
-          (e.observaciones ? '<div class="antetitulo" style="margin-top:40px">Observaciones</div><div class="texto-largo">' + esc(e.observaciones) + '</div>' : "") +
-        '</div>' +
-      '</div></div></section>' +
+      '<section class="seccion"><div class="contenedor">' +
+        '<div class="columnas"><span class="rotulo">Pedigrí</span><div>' + arbol(e) + '<p class="pedigri-nota">Tres generaciones. Los padres, en versalitas.</p></div></div>' +
+      '</div></section>' +
 
-      '<section class="seccion" style="padding-top:60px"><div class="contenedor">' +
-        '<div class="encabezado-seccion" style="margin-bottom:36px"><div><div class="antetitulo">Genealogía</div><h2 class="titulo-seccion">Árbol <em>genealógico</em></h2></div></div>' +
-        '<div class="pedigri-marco aparecer">' + arbol(e) + '</div>' +
-        '<p class="pedigri-nota">Machos en la línea superior de cada par; hembras en cursiva.</p>' +
+      '<section class="seccion"><div class="contenedor columnas">' +
+        '<span class="rotulo">Ficha</span>' +
+        '<div class="dos-col">' +
+          '<div><ul class="datos">' +
+            fila("Sexo", H.sexoTexto(e.sexo)) + fila("Pelaje", e.pelaje) + fila("Nacimiento", e.nacimiento ? H.fechaLarga(e.nacimiento) : "") +
+            fila("País", e.pais) + fila("Criador", "Haras Santa María de Juncal") + fila("Ubicación", e.ubicacion) +
+          '</ul></div>' +
+          '<div>' +
+            (e.descripcion ? '<div class="bloque"><span class="rotulo" style="margin-bottom:6px">Descripción</span><div class="texto-largo">' + esc(e.descripcion) + '</div></div>' : "") +
+            (e.campana ? '<div class="bloque"><span class="rotulo" style="margin-bottom:6px">Campaña</span><div class="texto-largo">' + esc(e.campana) + '</div></div>' : "") +
+            (e.observaciones ? '<div class="bloque"><span class="rotulo" style="margin-bottom:6px">Observaciones</span><div class="texto-largo">' + esc(e.observaciones) + '</div></div>' : "") +
+          '</div>' +
+        '</div>' +
       '</div></section>' +
 
       (e.info_padre || e.info_madre ?
-      '<section class="seccion blanca"><div class="contenedor"><div class="dos-col">' +
-        (ped.p || e.info_padre ? '<div class="tarjeta-progenitor aparecer"><small>El padre</small><h3>' + esc(ped.p || "—") + '</h3>' +
-          (ped.pp || ped.pm ? '<div class="linea-sangre">' + esc(ped.pp || "—") + ' — ' + esc(ped.pm || "—") + (ped.pmp ? ", por " + esc(ped.pmp) : "") + '</div>' : "") +
-          (e.info_padre ? '<p>' + esc(e.info_padre) + '</p>' : "") + '</div>' : "") +
-        (ped.m || e.info_madre ? '<div class="tarjeta-progenitor aparecer d1"><small>La madre</small><h3>' + esc(ped.m || "—") + '</h3>' +
-          (ped.mp || ped.mm ? '<div class="linea-sangre">' + esc(ped.mp || "—") + ' — ' + esc(ped.mm || "—") + (ped.mmp ? ", por " + esc(ped.mmp) : "") + '</div>' : "") +
-          (e.info_madre ? '<p>' + esc(e.info_madre) + '</p>' : "") + '</div>' : "") +
-      '</div></div></section>' : "") +
+      '<section class="seccion blanca"><div class="contenedor columnas">' +
+        '<span class="rotulo">Padre y madre</span>' +
+        '<div class="dos-col">' +
+          (ped.p || e.info_padre ? '<div class="progenitor"><h3 class="nombre">' + esc(ped.p || "—") + '</h3>' +
+            (ped.pp || ped.pm ? '<div class="linea-sangre">Por ' + esc(ped.pp || "—") + ' y ' + esc(ped.pm || "—") + (ped.pmp ? ", por " + esc(ped.pmp) : "") + '.</div>' : "") +
+            (e.info_padre ? '<p>' + esc(e.info_padre) + '</p>' : "") + '</div>' : "") +
+          (ped.m || e.info_madre ? '<div class="progenitor"><h3 class="nombre">' + esc(ped.m || "—") + '</h3>' +
+            (ped.mp || ped.mm ? '<div class="linea-sangre">Por ' + esc(ped.mp || "—") + ' y ' + esc(ped.mm || "—") + (ped.mmp ? ", por " + esc(ped.mmp) : "") + '.</div>' : "") +
+            (e.info_madre ? '<p>' + esc(e.info_madre) + '</p>' : "") + '</div>' : "") +
+        '</div>' +
+      '</div></section>' : "") +
 
-      '<section class="seccion" id="consulta"><div class="contenedor" style="max-width:820px">' +
-        '<form class="formulario aparecer" id="form-consulta" novalidate>' +
-          '<div class="antetitulo">Consulta</div>' +
+      '<section class="seccion" id="consulta"><div class="contenedor columnas">' +
+        '<span class="rotulo">Consulta</span>' +
+        '<form class="formulario" id="form-consulta" novalidate style="max-width:720px">' +
           '<h3>Consultar por ' + esc(e.nombre) + '</h3>' +
           '<p>Déjenos sus datos y le respondemos a la brevedad. También coordinamos visitas al Haras.</p>' +
           '<div class="campos">' +
@@ -158,7 +153,7 @@
             '<div class="campo completo"><label for="f-msj">Mensaje</label><textarea id="f-msj" name="mensaje">Me interesa este ejemplar. ¿Podrían enviarme más información?</textarea></div>' +
           '</div>' +
           '<input name="web" class="oculto" tabindex="-1" autocomplete="off" aria-hidden="true">' +
-          '<button class="boton ancho" type="submit">Enviar consulta</button>' +
+          '<button class="boton" type="submit">Enviar</button>' +
           '<div class="mensaje-ok" role="status"></div>' +
         '</form>' +
       '</div></section>';
@@ -208,9 +203,9 @@
   H.cargarVentas().then(({ lista }) => {
     const e = lista.find((x) => String(x.id) === String(id));
     if (!e) {
-      main.innerHTML = '<section class="seccion" style="padding-top:200px"><div class="contenedor centro">' +
-        '<div class="antetitulo centrado">En venta</div><h1 class="titulo-seccion">Ejemplar no encontrado</h1>' +
-        '<p class="bajada" style="margin:20px auto 34px">Es posible que ya no esté publicado.</p>' +
+      main.innerHTML = '<section class="seccion"><div class="contenedor">' +
+        '<span class="rotulo">En venta</span><h1 class="titulo">Ejemplar no encontrado</h1>' +
+        '<p class="bajada" style="margin-bottom:30px">Es posible que ya no esté publicado.</p>' +
         '<a class="boton" href="venta.html">Ver ejemplares en venta</a></div></section>';
       return;
     }

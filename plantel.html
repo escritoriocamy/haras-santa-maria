@@ -5,25 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Plantel · Yeguas madre y producción · Haras Santa María de Juncal</title>
 <meta name="description" content="Yeguas madre y producción del Haras Santa María de Juncal: genealogía, pelaje, año y país de cada ejemplar.">
-<meta name="theme-color" content="#13202c">
+<meta name="theme-color" content="#f4f1ea">
 <link rel="icon" type="image/png" href="img/marca-azul.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-<section class="banner">
-  <img src="img/ig-destete.jpg" alt="">
+<header class="cabecera-pagina">
   <div class="contenedor">
-    <div class="antetitulo">Plantel</div>
-    <h1>Yeguas madre <em>y producción</em></h1>
-    <p>El origen de cada generación del Haras: un plantel de yeguas de Uruguay, Argentina, Brasil, Chile y Estados Unidos.</p>
+    <span class="rotulo">Plantel</span>
+    <h1>Yeguas madre y producción</h1>
+    <p>Las yeguas del Haras, de Uruguay, Argentina, Brasil, Chile y Estados Unidos, y los productos nacidos en el campo.</p>
   </div>
-</section>
+</header>
 
-<section class="seccion" style="padding-top:60px">
+<section class="seccion" style="padding-top:44px">
   <div class="contenedor">
     <div class="pestanas" role="tablist">
       <button class="pestana activa" role="tab" data-tab="yeguas">Yeguas madre<span id="n-yeguas"></span></button>
@@ -91,8 +90,8 @@
       document.getElementById("yeguas").innerHTML = lista.map((y) =>
         '<article class="yegua">' +
           '<div class="yegua-top"><h3>' + esc(y.nombre) + '</h3><span class="pais" title="' + esc(PAISES[y.pais] || y.pais) + '">' + esc(y.pais) + '</span></div>' +
-          '<div class="yegua-meta">' + esc(pel(y.pelaje)) + ' · ' + y.nac + '</div>' +
-          '<div class="yegua-sangre">' + esc(y.padre) + ' <i>y</i> ' + esc(y.madre) + (y.abuelo ? '<br><i>por</i> ' + esc(y.abuelo) : "") + '</div>' +
+          '<div class="yegua-meta">' + esc(pel(y.pelaje)) + ', ' + y.nac + '</div>' +
+          '<div class="yegua-sangre">' + esc(y.padre) + ' y ' + esc(y.madre) + (y.abuelo ? ', por ' + esc(y.abuelo) : "") + '</div>' +
         '</article>').join("") || '<p class="cargando" style="background:var(--blanco)">Sin resultados.</p>';
     }
     document.getElementById("buscar-yeguas").addEventListener("input", pintarYeguas);
@@ -117,7 +116,7 @@
       const lista = prod.filter((p) => (!padre || p.padre === padre) && (!anio || String(p.nac) === anio) &&
         (!q || norm(p.nombre + " " + p.padre + " " + p.madre + " " + p.abuelo).includes(q)));
       document.getElementById("produccion").innerHTML = lista.map((p) =>
-        '<tr><td class="nombre">' + esc(p.nombre) + '</td><td>' + p.nac + '</td><td class="sexo">' + (p.sexo === "H" ? "Hembra" : "Macho") + '</td><td>' + esc(pel(p.pelaje)) + '</td>' +
+        '<tr><td class="nombre-t">' + esc(p.nombre) + '</td><td>' + p.nac + '</td><td class="sexo">' + (p.sexo === "H" ? "Hembra" : "Macho") + '</td><td>' + esc(pel(p.pelaje)) + '</td>' +
         '<td>' + esc(p.padre) + '</td><td>' + esc(p.madre) + '</td><td>' + esc(p.abuelo) + '</td></tr>').join("") ||
         '<tr><td colspan="7" style="text-align:center;color:var(--suave)">Sin resultados.</td></tr>';
       document.getElementById("n-filtrados").textContent = "Mostrando " + lista.length + " de " + prod.length + " productos.";

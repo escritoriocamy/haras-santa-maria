@@ -5,27 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ejemplares en venta · Haras Santa María de Juncal</title>
 <meta name="description" content="Ejemplares sangre pura de carrera en venta particular, criados en el Haras Santa María de Juncal, San José, Uruguay. Fichas con fotos, video y genealogía.">
-<meta name="theme-color" content="#13202c">
+<meta name="theme-color" content="#f4f1ea">
 <meta property="og:title" content="Ejemplares en venta · Haras Santa María de Juncal">
 <meta property="og:image" content="img/portera.jpg">
 <link rel="icon" type="image/png" href="img/marca-azul.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-<section class="banner">
-  <img src="img/portera.jpg" alt="" style="object-position:40% 50%">
+<header class="cabecera-pagina">
   <div class="contenedor">
-    <div class="antetitulo">Venta particular</div>
-    <h1>Ejemplares <em>en venta</em></h1>
-    <p>Además de nuestro remate anual, ofrecemos ejemplares seleccionados de nuestra producción, con su ficha completa a la vista.</p>
+    <span class="rotulo">Venta particular</span>
+    <h1>Ejemplares en venta</h1>
+    <p>Además del remate anual, el Haras ofrece algunos ejemplares de su producción en venta particular. Cada ficha incluye fotos, video, pedigrí e información del padre y la madre.</p>
   </div>
-</section>
+</header>
 
-<section class="seccion" style="padding-top:70px">
+<section class="seccion" style="padding-top:48px">
   <div class="contenedor">
     <div class="filtros" id="filtros">
       <div class="chips" role="group" aria-label="Filtrar por sexo">
@@ -41,12 +40,13 @@
 </section>
 
 <section class="seccion blanca">
-  <div class="contenedor angosto centro">
-    <div class="antetitulo centrado">Cómo comprar</div>
-    <h2 class="titulo-seccion">Un trato <em>directo</em> con el Haras</h2>
-    <div class="ornamento"><span data-icono="rombo"></span></div>
-    <p class="bajada">Consulte por WhatsApp o desde la ficha de cada ejemplar. Coordinamos visitas al Haras para conocerlo en persona y le enviamos toda la documentación y los videos que necesite.</p>
-    <p style="margin-top:34px"><a class="boton whatsapp" href="#" data-wa="Hola, quisiera consultar por los ejemplares en venta.">Consultar por WhatsApp</a></p>
+  <div class="contenedor columnas">
+    <span class="rotulo">Cómo comprar</span>
+    <div class="texto-intro">
+      <p class="entrada">El trato es directo con el Haras.</p>
+      <p>Consulte por WhatsApp o desde la ficha de cada ejemplar. Coordinamos visitas para verlo en persona y enviamos los videos y la documentación que necesite.</p>
+      <p style="margin-top:24px"><a class="boton" href="#" data-wa="Hola, quisiera consultar por los ejemplares en venta.">Consultar por WhatsApp</a></p>
+    </div>
   </div>
 </section>
 
@@ -57,7 +57,6 @@
   const H = window.Haras;
   H.encabezado("venta", true);
   H.pie();
-  document.querySelectorAll("[data-icono]").forEach((el) => { el.innerHTML = H.ICONOS[el.dataset.icono] || ""; });
   document.querySelectorAll("[data-wa]").forEach((a) => { a.href = H.waLink(a.dataset.wa); a.target = "_blank"; a.rel = "noopener"; });
 
   const cont = document.getElementById("lista");

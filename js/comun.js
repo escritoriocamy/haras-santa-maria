@@ -89,7 +89,7 @@
   function sangreTexto(e) {
     const p = e.ped || {};
     if (!p.p && !p.m) return "";
-    return esc(p.p || "—") + " <i>y</i> " + esc(p.m || "—");
+    return esc(p.p || "—") + " y " + esc(p.m || "—") + (p.mp ? ", por " + esc(p.mp) : "");
   }
 
   /* ---------- Datos de ejemplares en venta ---------- */
@@ -119,79 +119,59 @@
     const clase = estadoClase(e);
     const fotos = e.fotos || [];
     const portada = fotos[0] ? foto(fotos[0], 900) : "img/v-potrillos.jpg";
-    const etiqueta = clase === "vendido" ? '<span class="etiqueta vendido">Vendido</span>'
-      : clase === "reservado" ? '<span class="etiqueta reservado">Reservado</span>'
-      : (String(e.destacado).toLowerCase() === "true" || e.destacado === true ? '<span class="etiqueta">Destacado</span>' : "");
     const anio = anioNac(e);
-    const meta = [sexoTexto(e.sexo), e.pelaje, anio].filter(Boolean).map(esc).join(" · ");
+    const estado = clase === "vendido" ? "Vendido" : clase === "reservado" ? "Reservado" : "";
+    const meta = [sexoTexto(e.sexo), e.pelaje, anio].filter(Boolean).map(esc).join(", ");
     const precio = precioTexto(e);
-    return '<a class="tarjeta aparecer ' + (clase === "vendido" ? "vendida" : "") + '" href="ejemplar.html?id=' + encodeURIComponent(e.id) + '">' +
-      '<div class="tarjeta-foto">' + etiqueta +
-        (e.ejemplo ? '<span class="etiqueta-ejemplo">Ejemplo</span>' : "") +
-        '<img src="' + esc(portada) + '" alt="' + esc(e.nombre) + '" loading="lazy">' +
-        (e.video ? '<span class="icono-video">' + ICONOS.play + 'Video</span>' : "") +
-      '</div>' +
+    return '<a class="tarjeta' + (clase === "vendido" ? " vendida" : "") + '" href="ejemplar.html?id=' + encodeURIComponent(e.id) + '">' +
+      '<div class="tarjeta-foto"><img src="' + esc(portada) + '" alt="' + esc(e.nombre) + '" loading="lazy"></div>' +
       '<div class="tarjeta-cuerpo">' +
-        '<div class="tarjeta-meta">' + meta + '</div>' +
-        '<h3>' + esc(e.nombre) + '</h3>' +
+        '<span class="meta">' + meta + (estado ? ' · <span class="marca-estado">' + estado + '</span>' : "") + (e.ejemplo ? ' · ficha de ejemplo' : "") + '</span>' +
+        '<h3 class="nombre">' + esc(e.nombre) + '</h3>' +
         '<div class="tarjeta-sangre">' + sangreTexto(e) + '</div>' +
         '<div class="tarjeta-pie">' +
-          '<div class="tarjeta-precio">' + (clase === "vendido" ? "<small>Vendido</small>" : precio ? precio : "<small>Precio a consultar</small>") + '</div>' +
-          '<span class="enlace">Ver ficha ' + ICONOS.flecha + '</span>' +
+          '<span class="precio">' + (clase === "vendido" ? "<i>Vendido</i>" : precio ? precio : "<i>Precio a consultar</i>") + '</span>' +
+          '<span class="ver">Ver ficha</span>' +
         '</div>' +
       '</div>' +
     '</a>';
   }
 
   function bloqueProximamente() {
-    return '<div class="proximamente aparecer">' +
-      '<div class="antetitulo centrado">Ventas particulares</div>' +
-      '<h3>Próximamente, nuevos ejemplares</h3>' +
-      '<p>Además de nuestro remate anual, ofreceremos en venta particular ejemplares seleccionados de nuestra producción, con su ficha completa, fotos, video y genealogía.</p>' +
+    return '<div class="proximamente">' +
+      '<h3>Próximamente</h3>' +
+      '<p>Además del remate anual, el Haras ofrecerá en venta particular ejemplares seleccionados de su producción. Cada uno tendrá su ficha con fotos, video y pedigrí.</p>' +
       '<div class="acciones">' +
-        '<a class="boton whatsapp" href="' + waLink("Hola, quisiera recibir información cuando publiquen ejemplares en venta.") + '" target="_blank" rel="noopener">' + ICONOS.whatsapp + 'Avisarme por WhatsApp</a>' +
-        '<a class="boton claro" href="index.html#contacto">Escribirnos</a>' +
+        '<a class="boton" href="' + waLink("Hola, quisiera recibir información cuando publiquen ejemplares en venta.") + '" target="_blank" rel="noopener">Avisarme por WhatsApp</a>' +
+        '<a class="enlace" href="index.html#contacto">Escribirnos</a>' +
       '</div>' +
     '</div>';
   }
 
   /* ---------- Encabezado y pie ---------- */
-  function encabezado(activo, sobreOscuro) {
-    const items = [
-      ["index.html#haras", "El Haras", "haras"],
-      ["index.html#padrillos", "Padrillos", "padrillos"],
-      ["plantel.html", "Plantel", "plantel"],
-      ["index.html#contacto", "Contacto", "contacto"],
-      ["venta.html", "En venta", "venta"]
-    ];
+  function encabezado(activo) {
+    const izq = [["index.html#haras", "El Haras", "haras"], ["index.html#padrillos", "Padrillos", "padrillos"], ["plantel.html", "Plantel", "plantel"]];
+    const der = [["venta.html", "En venta", "venta"], ["index.html#contacto", "Contacto", "contacto"]];
+    const enlaces = (l) => l.map((i) => '<a href="' + i[0] + '"' + (i[2] === activo ? ' class="activo"' : "") + '>' + i[1] + '</a>').join("");
     const h = document.createElement("header");
-    h.className = "encabezado" + (sobreOscuro ? " sobre-oscuro" : " solido");
+    h.className = "encabezado";
     h.innerHTML =
-      '<div class="contenedor">' +
-        '<a class="marca" href="index.html" aria-label="Inicio — ' + esc(C.NOMBRE) + '">' +
-          '<img class="marca-azul" src="img/marca-azul.png" alt="" width="52" height="40">' +
-          '<img class="marca-blanco" src="img/marca-blanco.png" alt="" width="52" height="40">' +
-          '<span class="marca-texto"><small>Haras</small><strong>Santa María</strong><span>de Juncal</span></span>' +
-        '</a>' +
-        '<nav class="nav" aria-label="Principal">' +
-          items.map((i) => '<a href="' + i[0] + '" class="' + (i[2] === activo ? "activo " : "") + (i[2] === "venta" ? "destacado-nav" : "") + '">' + i[1] + '</a>').join("") +
-        '</nav>' +
-        '<button class="boton-menu" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>' +
-      '</div>';
+      '<div class="contenedor enc-grid">' +
+        '<nav class="nav izq" aria-label="Principal">' + enlaces(izq) + '</nav>' +
+        '<a class="marca" href="index.html" aria-label="' + esc(C.NOMBRE) + ' — inicio"><img class="marca-azul" src="img/logo-azul.png" alt="' + esc(C.NOMBRE) + '" width="630" height="600"></a>' +
+        '<nav class="nav der" aria-label="Ventas y contacto">' + enlaces(der) + '</nav>' +
+        '<button class="boton-menu" type="button" aria-expanded="false">Menú</button>' +
+      '</div>' +
+      '<nav class="nav-movil" aria-label="Menú">' +
+        '<button class="cerrar-menu" type="button">Cerrar</button>' +
+        '<a href="index.html">Inicio</a>' + enlaces(izq) + enlaces(der) +
+      '</nav>';
     document.body.prepend(h);
-
     const boton = h.querySelector(".boton-menu");
-    boton.addEventListener("click", () => {
-      const abierto = document.body.classList.toggle("menu-abierto");
-      boton.setAttribute("aria-expanded", abierto);
-    });
-    h.querySelectorAll(".nav a").forEach((a) => a.addEventListener("click", () => document.body.classList.remove("menu-abierto")));
-
-    if (sobreOscuro) {
-      const actualizar = () => h.classList.toggle("solido", window.scrollY > 60);
-      actualizar();
-      window.addEventListener("scroll", actualizar, { passive: true });
-    }
+    const cerrar = () => { document.body.classList.remove("menu-abierto"); boton.setAttribute("aria-expanded", "false"); };
+    boton.addEventListener("click", () => { document.body.classList.add("menu-abierto"); boton.setAttribute("aria-expanded", "true"); });
+    h.querySelector(".cerrar-menu").addEventListener("click", cerrar);
+    h.querySelectorAll(".nav-movil a").forEach((a) => a.addEventListener("click", cerrar));
   }
 
   function pie() {
@@ -199,45 +179,16 @@
     f.className = "pie";
     f.innerHTML =
       '<div class="contenedor">' +
-        '<div class="pie-grid">' +
-          '<div>' +
-            '<img class="pie-logo" src="img/logo-blanco.png" alt="' + esc(C.NOMBRE) + '" loading="lazy">' +
-            '<p>Cría de caballos sangre pura de carrera.<br>' + esc(C.PARAJE) + ', Uruguay.</p>' +
-            '<div class="redes">' +
-              '<a href="' + C.INSTAGRAM + '" target="_blank" rel="noopener" aria-label="Instagram">' + ICONOS.instagram + '</a>' +
-              '<a href="' + C.FACEBOOK + '" target="_blank" rel="noopener" aria-label="Facebook">' + ICONOS.facebook + '</a>' +
-              '<a href="' + waLink() + '" target="_blank" rel="noopener" aria-label="WhatsApp">' + ICONOS.whatsapp + '</a>' +
-            '</div>' +
-          '</div>' +
-          '<div><h4>El Haras</h4><ul>' +
-            '<li><a href="index.html#haras">Quiénes somos</a></li>' +
-            '<li><a href="index.html#padrillos">Padrillos</a></li>' +
-            '<li><a href="index.html#trayectoria">Trayectoria</a></li>' +
-            '<li><a href="index.html#galeria">Galería</a></li>' +
-          '</ul></div>' +
-          '<div><h4>Ejemplares</h4><ul>' +
-            '<li><a href="venta.html">En venta</a></li>' +
-            '<li><a href="plantel.html#yeguas">Yeguas madre</a></li>' +
-            '<li><a href="plantel.html#produccion">Producción</a></li>' +
-          '</ul></div>' +
-          '<div><h4>Contacto</h4><ul>' +
-            '<li><a href="tel:+' + C.WHATSAPP + '">' + esc(C.TELEFONO) + '</a></li>' +
-            '<li><a href="mailto:' + C.EMAIL + '">' + esc(C.EMAIL) + '</a></li>' +
-            '<li>' + esc(C.DIRECCION) + '</li>' +
-          '</ul></div>' +
-        '</div>' +
-        '<div class="pie-legal"><span>© ' + new Date().getFullYear() + ' ' + esc(C.NOMBRE) + '</span><span>San José · Uruguay</span></div>' +
+        '<img class="pie-logo" src="img/logo-azul.png" alt="' + esc(C.NOMBRE) + '" loading="lazy">' +
+        '<nav class="pie-links">' +
+          '<a href="index.html#haras">El Haras</a><a href="index.html#padrillos">Padrillos</a><a href="venta.html">En venta</a>' +
+          '<a href="plantel.html">Plantel</a><a href="index.html#contacto">Contacto</a>' +
+          '<a href="' + C.INSTAGRAM + '" target="_blank" rel="noopener">Instagram</a><a href="' + C.FACEBOOK + '" target="_blank" rel="noopener">Facebook</a>' +
+        '</nav>' +
+        '<p class="pie-datos">' + esc(C.DIRECCION) + ' · <a href="' + waLink() + '" target="_blank" rel="noopener">' + esc(C.TELEFONO) + '</a> · <a href="mailto:' + C.EMAIL + '">' + esc(C.EMAIL) + '</a></p>' +
+        '<p class="pie-legal">© ' + new Date().getFullYear() + ' ' + esc(C.NOMBRE) + '</p>' +
       '</div>';
     document.body.appendChild(f);
-
-    const wa = document.createElement("a");
-    wa.className = "wa-flotante";
-    wa.href = waLink();
-    wa.target = "_blank";
-    wa.rel = "noopener";
-    wa.setAttribute("aria-label", "Escribir por WhatsApp");
-    wa.innerHTML = ICONOS.whatsapp;
-    document.body.appendChild(wa);
   }
 
   /* ---------- Aparición al hacer scroll ---------- */
@@ -278,7 +229,7 @@
     document.body.style.overflow = "";
   }
   function abrirFilm() {
-    const m = abrirModal('<video src="video/haras-film.mp4" poster="video/poster.jpg" controls autoplay playsinline></video>');
+    const m = abrirModal('<video src="video/haras-film.mp4" controls autoplay playsinline></video>');
     const v = m.querySelector("video");
     v.volume = 0.8;
   }
