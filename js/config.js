@@ -6,7 +6,7 @@
 window.HARAS = {
   /* Dirección del Apps Script (Implementar → Aplicación web → URL que termina en /exec).
      Mientras esté vacía, la web funciona igual y muestra los ejemplos. */
-  SCRIPT_URL: "",
+  SCRIPT_URL: "https://script.google.com/macros/s/AKfycbyq0OJ7GuRSFoTJNTmcBhY8YmvusG35mwTxX_buztmH0HJF_KhBM8juhwdTV1ydc1jueQ/exec",
 
   /* true = si todavía no hay ejemplares cargados, muestra 2 ejemplares de muestra
      (con la etiqueta "Ejemplo") para presentarle la web al dueño.
